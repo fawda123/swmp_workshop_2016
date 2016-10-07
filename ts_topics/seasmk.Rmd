@@ -28,11 +28,11 @@ The following manipulates the nutrient data in a format for trend analysis.  Pro
 (`%>%`) to run functions in sequence.  The following steps are used to process the nutrient data.
 
 1. Retain observations with 0 and 4 qaqc codes
-2. Select 
+2. Select ammonium
 3. Create year, month columns 
 4. Average observations by year, month combos to remove duplicates
 5. Expand data by rows to create complete year, month sequence for time series object
-6. Create `decimal_date` column for regression, log of response for variance stabilization
+6. Transform response for variance stabilization
 ```{r}
 # qaqc removal, select ammonium, average month/year values, create complete time series, add decimal date
 dat <- qaqc(apacpnut, qaqc_keep = c(0, 4)) %>% 
@@ -46,9 +46,6 @@ dat <- qaqc(apacpnut, qaqc_keep = c(0, 4)) %>%
   ungroup %>% 
   complete(year, month) %>% 
   mutate(
-    date = paste(year, month, '01', sep = '-'),
-    date = as.Date(date), 
-    date = decimal_date(date),
     nh4f = log(nh4f)
     )
 ```
@@ -62,7 +59,7 @@ dat_ts <- select(dat, nh4f) %>%
 plot(dat_ts)
 ```
 
-The `SeasonalMannKendall` test evaluates the direction and significance of a trend in the time series.  This test accounts for seasonal changes as a confounding factor in trend evaluation by grouping observations by month.  This is analagous to the Mann Kendall test on invidual months across years.  The results return the tau value (-1 to 1) as a rank-based measure of the change over time.  The two-sided p-value shows the probability of observing a change in either direction due to random chance alone (small values indicate results are likely not due to change).  These results show that a slight positive increase occurs in the time series but it is not significant.
+The `SeasonalMannKendall` test evaluates the direction and significance of a trend in the time series.  This test accounts for seasonal changes as a confounding factor in trend evaluation by grouping observations by month.  This is analagous to the Mann Kendall test on invidual months across years.  The results return the tau value (-1 to 1) as a rank-based measure of the change over time.  The two-sided p-value shows the probability of observing a change in either direction due to random chance alone (small values indicate results are likely not due to chance).  These results show that a slight positive increase occurs in the time series but it is not significant.
 ```{r}
 # seasonal mannkendall
 SeasonalMannKendall(dat_ts)
