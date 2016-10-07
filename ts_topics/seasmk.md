@@ -2,7 +2,7 @@
 Marcus W. Beck, beck.marcus@epa.gov  
 October 6, 2016  
 
-The following is an example of a simple trend analysis for SWMP nutrient data.  It uses the `SWMPr` package for data pre-processing, `Kendall` package for seasonal Mann Kendall tests, and `tidyverse` for additional data processing.
+The following is an example of a simple trend analysis for SWMP nutrient data.  It uses the `SWMPr` package for data pre-processing, `Kendall` package for seasonal Mann Kendall tests, `tidyverse` for additional data processing, and `lubridate` for date processing.
 
 First, load the packages and example data.  Uncomment the lines to install missing packages as needed.
 
