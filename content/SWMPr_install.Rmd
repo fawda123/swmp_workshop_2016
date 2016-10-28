@@ -2,7 +2,9 @@
 output: html_document
 ---
 
-### Installing SWMPr, option 1
+## Installing SWMPr
+
+### Option 1
 
 From the R Console prompt, run the following commands to install from CRAN and load. 
 
@@ -11,7 +13,7 @@ install.packages('SWMPr')
 library(SWMPr)
 ```
 
-### Installing SWMPr, option 2
+### Option 2
 
 1) Download the source file: [v2.1.7.9000.tar.gz](https://github.com/fawda123/SWMPr/archive/v2.1.7.9000.tar.gz)
 

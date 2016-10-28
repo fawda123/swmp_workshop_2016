@@ -2,7 +2,9 @@
 output: html_document
 ---
 
-### Installing WRTDStidal, option 1
+## Installing WRTDStidal
+
+### Option 1
 
 From the R Console prompt, run the following commands to install and load the development version from GitHub. 
 
@@ -13,7 +15,7 @@ install_github('fawda123/WRTDStidal')
 library(WRTDStidal)
 ```
 
-### Installing WRTDStidal, option 2
+### Option 2
 
 1) Download the source file: [v0.0.49.9000.tar.gz](https://github.com/fawda123/WRTDStidal/archive/v0.0.49.9000.tar.gz)
 

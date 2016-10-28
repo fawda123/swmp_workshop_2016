@@ -1,8 +1,10 @@
 ---
+title: Workshop overview
 output: 
   prettydoc::html_pretty:
     theme: cayman
     highlight: vignette
+date: "November 13, 2016"
 ---
 
 ![](workshop2016logo.png)
