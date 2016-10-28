@@ -21,7 +21,8 @@ library(SWMPr)
 # change as needed
 path_to_file <- 'C:/Users/mbeck/Desktop/SWMPr-v2.1.7.9000.tar.gz'
 
-# install  
+# install, load
 install.packages(path_to_file, repos = NULL, type="source")
+library(SWMPr)
 ```
 

@@ -1,0 +1,25 @@
+---
+title: "Morning agenda: R, SWMPr"
+author: "Instructors: Kim Cressman, Kari St. Laurent"
+date: "November 13, 2016"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: vignette
+---
+
+The **morning session** will cover the basics of R and SWMPr.  R is a data analysis software and programming language and SWMPr is an R package designed for working with SWMP data.  
+
+### 8:30am Software set-up/help
+
+Instructors will assist workshop attendees with **last‐minute** software issues.
+
+### 9:00am 
+
+### 10:30am BREAK
+
+### 10:45am 
+
+### 12:00pm LUNCH
+
+

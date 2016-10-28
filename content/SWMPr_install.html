@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 <div id="installing-swmpr-option-1" class="section level3">
 <h3>Installing SWMPr, option 1</h3>
-<p>From the R Console prompt, run the following commands.</p>
+<p>From the R Console prompt, run the following commands to install from CRAN and load.</p>
 <pre class="r"><code>install.packages('SWMPr')
 library(SWMPr)</code></pre>
 </div>
@@ -134,8 +134,9 @@ library(SWMPr)</code></pre>
 <pre class="r"><code># change as needed
 path_to_file &lt;- 'C:/Users/mbeck/Desktop/SWMPr-v2.1.7.9000.tar.gz'
 
-# install  
-install.packages(path_to_file, repos = NULL, type=&quot;source&quot;)</code></pre>
+# install, load
+install.packages(path_to_file, repos = NULL, type=&quot;source&quot;)
+library(SWMPr)</code></pre>
 </div>
 
 

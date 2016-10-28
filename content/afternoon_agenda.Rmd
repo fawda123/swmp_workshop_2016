@@ -1,0 +1,52 @@
+---
+title: "Afternoon agenda: widgets and selected time series topics"
+author: "Instructor: Marcus W. Beck"
+date: "November 13, 2016"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: vignette
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The **afternoon session** will be an overview of the widgets of SWMPrats and selected time series topics.  The [SWMPrats](http://swmprats.net/) website was created to assist the NERRS program with analysis and interpretation of SWMP data.  Three widgets on the website allow users to summarize trends within and between sites using a point-and-click approach.  Selected time series topics will include weighted regression for trend analysis, time series decomposition, and Seasonal Kendall tests.  
+
+### 1:30pm Software set-up/help
+
+Instructors will assist workshop attendees with **last‐minute** software issues.
+
+### 2:00pm Introduction to Widgets
+
+* Overview of [SWMPrats](http://swmprats.net/) website
+* Overview of interactive [widgets](http://swmprats.net/swmp-widgets)
+    * SWMP summary plots  
+    * SWMP trend maps  
+    * SWMP aggregations
+    
+### 2:30pm Time Series Topic 1
+
+* Weighted regression in tidal waters
+    * Overview - what, why
+    * Application - example scripts
+    
+### 3:30pm BREAK
+
+### 3:45pm Time Series Topics 2, 3
+
+* Timeseries decomposition
+    * Overview - what, why
+    * Application - example scripts
+    
+Materials: link to script
+
+* Seasonal Kendall tests
+    * Overivew - what, why
+    * Application - example scripts
+    
+Materials: link to sript
+
+### 5:00pm ADJOURN
+
