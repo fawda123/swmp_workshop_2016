@@ -7,7 +7,7 @@ output:
 date: "November 13, 2016"
 ---
 
-![](workshop2016logo.png)
+![](imgs/workshop2016logo.png)
 
 ### Instructors
 
@@ -47,9 +47,9 @@ Attendees must bring a **personal laptop** with the following items installed:
 
 We strongly encourage you to review the following to better prepare for the workshop:
 
-* Supplementary R resources: <a href="images/intro_to_R.pdf" target="_parent">Introduction</a>,  <a href="images/R_for_data_analysis.pdf" target="_parent">R for data danalysis</a>
+* Supplementary R resources: <a href="http://swmprats.net/images/intro_to_R.pdf" target="_parent">Introduction</a>,  <a href="http://swmprats.net/images/R_for_data_analysis.pdf" target="_parent">R for data analysis</a>
 
 * SWMPr: <a href="https://journal.r-project.org/archive/2016-1/beck.pdf" target = "_parent">manuscript</a>
 
-* Weighted regression in tidal waters with WRTDStidal: <a href="images/Beck-and-Hagy-2015-weighted-regression-for-tidal-waters.pdf" target = "_parent">manuscript</a>, <a href="https://github.com/fawda123/WRTDStidal" target = "_parent">website</a>
+* Weighted regression in tidal waters with WRTDStidal: <a href="http://swmprats.net/images/Beck-and-Hagy-2015-weighted-regression-for-tidal-waters.pdf" target = "_parent">manuscript</a>, <a href="https://github.com/fawda123/WRTDStidal" target = "_parent">website</a>
 

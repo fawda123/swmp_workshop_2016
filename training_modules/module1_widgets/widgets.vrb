@@ -1,0 +1,27 @@
+\frametitle{Widgets of SWMPrats.net: SWMP summary}
+Note: The \texttt{plot\_summary} function in SWMPr is used to create the plots.
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(SWMPr)}
+
+\hlcom{## import data}
+\hlkwd{data}\hlstd{(apacpnut)}
+\hlstd{dat} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(apacpnut)}
+
+\hlcom{## plot}
+\hlkwd{plot_summary}\hlstd{(dat,} \hlkwc{param} \hlstd{=} \hlstr{'chla_n'}\hlstd{,} \hlkwc{years} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{2007}\hlstd{,} \hlnum{2013}\hlstd{))}
+
+\hlcom{## get individaul plots}
+\hlstd{plots} \hlkwb{<-} \hlkwd{plot_summary}\hlstd{(dat,} \hlkwc{param} \hlstd{=} \hlstr{'chla_n'}\hlstd{,} \hlkwc{years} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{2007}\hlstd{,} \hlnum{2013}\hlstd{),}
+  \hlkwc{plt_sep} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+
+\hlstd{plots[[}\hlnum{1}\hlstd{]]} \hlcom{# top left}
+\hlstd{plots[[}\hlnum{3}\hlstd{]]} \hlcom{# middle}
+\hlstd{plots[[}\hlnum{6}\hlstd{]]} \hlcom{# bottom right}
+
+\hlcom{## get summary data}
+\hlkwd{plot_summary}\hlstd{(dat,} \hlkwc{param} \hlstd{=} \hlstr{'chla_n'}\hlstd{,} \hlkwc{year} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{2007}\hlstd{,} \hlnum{2013}\hlstd{),} \hlkwc{sum_out} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
