@@ -1,0 +1,12 @@
+---
+title: "Afternon agenda"
+author: "Instructor: Marcus W. Beck"
+date: "November 13, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The afternoon workshop will will expose participants to the widgets of [swmprats.net](http://www.swmprats.net) and specific topics in time series analysis.  A familiarity with R is mandatory and participants must have R (>3.0.0) and RStudio installed on their laptops.  
