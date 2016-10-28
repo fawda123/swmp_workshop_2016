@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The **afternoon session** will be an overview of the widgets of SWMPrats and selected time series topics.  The [SWMPrats](http://swmprats.net/) website was created to assist the NERRS program with analysis and interpretation of SWMP data.  Three widgets on the website allow users to summarize trends within and between sites using a point-and-click approach.  Selected time series topics will include weighted regression for trend analysis, time series decomposition, and Seasonal Kendall tests.  
+The **afternoon session** will be an overview of the widgets of SWMPrats and selected time series topics.  The <a href="http://swmprats.net" target = "_parent">SWMPrats</a> website was created to assist the NERRS program with analysis and interpretation of SWMP data.  Three widgets on the website allow users to summarize trends within and between sites using a point-and-click approach.  Selected time series topics will include weighted regression for trend analysis, time series decomposition, and Seasonal Kendall tests.  
 
 ### 1:30pm Software set-up/help
 
@@ -20,8 +20,8 @@ Instructors will assist workshop attendees with **last‐minute** software issue
 
 ### 2:00pm Introduction to Widgets
 
-* Overview of [SWMPrats](http://swmprats.net/) website
-* Overview of interactive [widgets](http://swmprats.net/swmp-widgets)
+* Overview of <a href="http://swmprats.net" target = "_parent">SWMPrats</a> website
+* Overview of interactive <a href="http://swmprats.net/swmp-widgets" target = "_parent">widgets</a>
     * SWMP summary plots  
     * SWMP trend maps  
     * SWMP aggregations

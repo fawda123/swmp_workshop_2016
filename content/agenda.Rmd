@@ -15,7 +15,7 @@ Kim Cressman - Grand Bay NERR, [Kimberly.Cressman@dmr.ms.gov](mailto:Kimberly.Cr
 Kari St. Laurent - Delaware NERR, [Kari.St.Laurent@state.de.us](mailto:Kari.St.Laurent@state.de.us)  
 Marcus W. Beck - USEPA, [beck.marcus@epa.gov](mailto:beck.marcus@epa.gov)
 
-See our [bio page](http://swmprats.net/swmprats-team) for more info.
+See our <a href="http://swmprats.net/swmprats-team" target="_parent">bio page</a> for more info.
 
 ### Description
 
@@ -31,16 +31,15 @@ Both sessions will prepare users to better navigate R software for tackling SWMP
 
 Attendees must bring a **personal laptop** with the following items installed:
 
-1) Install R v3.3.1 (or later): [Instructions](http://swmprats.net/workshop-2014/images/documents/R_install_guide.pdf) (page 1 - 4)
+1) Install R v3.3.1 (or later): <a href="http://swmprats.net/workshop-2014/images/documents/R_install_guide.pdf" target="_parent">Instructions</a> (page 1 - 4)
 
-2) Install RStudio v0.99.903 (or later): [Instructions](http://swmprats.net/workshop-2014/images/documents/R_install_guide.pdf)
-(page 5 - 6)
+2) Install RStudio v0.99.903 (or later): <a href="http://swmprats.net/workshop-2014/images/documents/R_install_guide.pdf" target="_parent">Instructions</a> (page 5 - 6)
 
 3) Install SWMPr v2.1.7: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/SWMPr_install)
 
 4) Download training modules
 
-5) Install WRTDStidal v.0.49.9000, [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/WRTDStidal_install) (**afternoon session only**)
+5) Install WRTDStidal v.0.49.9000: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/WRTDStidal_install) (**afternoon session only**)
 
 ***Current software versions are required!***  *You will have problems if you have older versions installed.* ***The software installation will require Admin Rights on your computer!***  *If you do not have these rights, or do not know the password to allow these rights, your computer IT department/person will need to install this software BEFORE you come to the workshop.*
 
@@ -48,9 +47,9 @@ Attendees must bring a **personal laptop** with the following items installed:
 
 We strongly encourage you to review the following to better prepare for the workshop:
 
-* Supplementary R resources: [Introduction](https://github.com/fawda123/swmp_workshop_2014/raw/master/preworkshop_toolkit/intro_to_r/intro_to_R.pdf) and [data analysis](https://github.com/fawda123/swmp_workshop_2014/raw/master/preworkshop_toolkit/r_for_data_analysis/R_for_data_analysis.pdf)
+* Supplementary R resources: <a href="images/intro_to_R.pdf" target="_parent">Introduction</a>,  <a href="images/R_for_data_analysis.pdf" target="_parent">R for data danalysis</a>
 
-* SWMPr: [manuscript](https://journal.r-project.org/archive/2016-1/beck.pdf)
+* SWMPr: <a href="https://journal.r-project.org/archive/2016-1/beck.pdf" target = "_parent">manuscript</a>
 
-* Weighted regression in tidal waters with WRTDStidal: [manuscript](http://swmprats.net/images/Beck-and-Hagy-2015-weighted-regression-for-tidal-waters.pdf), [web site](https://github.com/fawda123/WRTDStidal)
+* Weighted regression in tidal waters with WRTDStidal: <a href="images/Beck-and-Hagy-2015-weighted-regression-for-tidal-waters.pdf" target = "_parent">manuscript</a>, <a href="https://github.com/fawda123/WRTDStidal" target = "_parent">website</a>
 
