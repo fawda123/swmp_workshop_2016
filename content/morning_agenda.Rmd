@@ -1,7 +1,7 @@
 ---
 title: "Morning agenda: R, SWMPr"
-author: "Instructors: Kim Cressman, Kari St. Laurent"
-date: "November 13, 2016"
+author: "Facilitators: Kim Cressman (Grand Bay NERR), Kari St. Laurent (Delaware NERR)"
+date: "November 13, 2016, 8:00am - 12:00pm"
 output: 
   prettydoc::html_pretty:
     theme: cayman
@@ -10,16 +10,58 @@ output:
 
 The **morning session** will cover the basics of R and SWMPr.  R is a data analysis software and programming language and SWMPr is an R package designed for working with SWMP data.  
 
-### 8:30am Software set-up/help
+### Objectives
+
+1) Review some R basics such as importing data and plotting
+2) Demonstrate useful functions in the SWMPr package
+3) Investigate how real data from your Reserve can be processed and visualized
+
+### 7:30am Software set-up/help
 
 Instructors will assist workshop attendees with **last‐minute** software issues.
 
-### 9:00am 
+### 8:00am Introductions and data check 
 
-### 10:30am BREAK
+* Who are we and who are you
+* Make sure everyone has the materials needed for the morning session
 
-### 10:45am 
+### 8:15am Powerpoint presentation
 
-### 12:00pm LUNCH
+* Overview of the morning session 
+* why it's worth your effort to learn R
 
+### 8:40am Part I: Data import and plots
+
+* Refresher on reading in data and beginning to plot
+* brief overview of some R basics
+
+### 9:15am Part II: Using R to deal with difficult data, Case Study 1
+
+Case Study 1: import_local and QAQC
+
+* Learn to import data downloaded from CDMO directly into RStudio as a swmpr object  
+* Learn to select which qaqc flags you want to plot
+
+### 10:00am BREAK
+
+### 10:15am Part II: Using R to deal with difficult data, Case Study 2
+
+Case Study II: aggreswmp
+
+* aggregate by time interval  
+* aggregate by function   
+* try some different plotting types  
+
+### 11:00am Part II: Using R to deal with difficult data, Case Study 3
+
+Case Study III: Overplotting ISCO and WQ data
+
+* investigate multiple parameters on the same plot  
+* bonus material on handling NAs
+
+### 11:30am Part III: Bring your own data
+
+* Try these codes on your own data!
+
+### 12:00pm ADJOURN 
 
