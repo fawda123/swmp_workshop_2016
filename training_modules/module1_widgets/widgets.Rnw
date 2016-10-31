@@ -60,14 +60,14 @@ devtools::load_all('M:/docs/SWMPr')
 \section{Overview}
 
 %%%%%%
-\begin{frame}{Objectives for the session (2:00 - 2:30)}
+\begin{frame}{Objectives for the session (1:15 - 2:00)}
 \begin{itemize}
 \item Overview of the website \\~\\
 \item Overview of the widgets \\~\\
 \begin{itemize}
-\item SWMP summary \\~\\
-\item SWMP trends \\~\\
-\item SWMP aggregate \\~\\
+\item SWMP summary - evaluate trends of a single parameter at a single site \\~\\
+\item SWMP trends - compare trends of a single parameter within and between reserves using a map \\~\\
+\item SWMP aggregate - compare aggregated trends of different parameters within and between reserves \\~\\
 \end{itemize}
 \end{itemize}
 \end{frame}

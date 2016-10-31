@@ -1,15 +1,15 @@
 ---
-title: Workshop overview
+title: Workshop overview, R, SWMPr, SWMPrats for non-beginners
 output: 
   prettydoc::html_pretty:
     theme: cayman
     highlight: vignette
-date: "November 13, 2016"
+date: "November 13, 2016, 8am - 12pm, 1pm - 5pm"
 ---
 
 ![](imgs/workshop2016logo.png)
 
-### Instructors
+### Facilitators
 
 Kim Cressman - Grand Bay NERR, [Kimberly.Cressman@dmr.ms.gov](mailto:Kimberly.Cressman@dmr.ms.gov)  
 Kari St. Laurent - Delaware NERR, [Kari.St.Laurent@state.de.us](mailto:Kari.St.Laurent@state.de.us)  

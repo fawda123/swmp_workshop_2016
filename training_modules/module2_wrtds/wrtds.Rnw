@@ -1,0 +1,598 @@
+\documentclass[xcolor=dvipsnames,serif]{beamer}
+\usetheme{Boadilla}
+\usecolortheme[named=CornflowerBlue]{structure}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage[draft]{animate}
+\usepackage{lmodern}
+\usetikzlibrary{shadows,arrows,positioning}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=links,urlcolor=links}
+\usepackage{pgfpages}
+
+\tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+% change font of frame titles and title slide
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries} 
+
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+
+\newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
+
+\begin{document}
+
+\title[WRTDS]{Time series topic 1: Weighted regression}
+
+\author[M. Beck]{Marcus W. Beck\inst{1}}
+
+\date{}
+
+\institute[]{\inst{1} USEPA NHEERL Gulf Ecology Division\\ Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}}
+
+% knitr setup
+<<setup, include = F, cache = F>>=
+library(knitr)
+
+# set global chunk options
+opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize')
+options(replace.assign=TRUE,width=80,digits=1)
+@
+
+% dependents
+<<swmpr, eval = T, echo = F, cache = F, message = F>>=
+library(WRTDStidal)
+library(tidyverse)
+@
+
+% get online bib file
+<<echo = FALSE, cache = FALSE>>=
+refs <- httr::GET('https://raw.githubusercontent.com/fawda123/refs/master/refs.bib')
+refs <- rawToChar(refs$content)
+writeLines(refs, con = file('refs.bib'))
+@
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\titlepage
+\end{frame}
+
+\section{Overview}
+
+%%%%%%
+\begin{frame}{Objectives for the session (2:00 - 3:00)}
+\begin{itemize}
+\item What is weighted regression \\~\\
+\item The WRTDStidal package \\~\\
+\item Application to NERRS data \\~\\
+\begin{itemize}
+\item Fitting a model \\~\\
+\item Evaluating a model \\~\\
+\item Viewing a model\\~\\
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Interactive portion}
+\onslide<+->
+Follow along as we go:\\~\\
+\begin{itemize}
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2016 workshop tab \\~\\
+\end{itemize}
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}} 
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use the WRTDStidal package \\~\\
+Option 1, from the R Console prompt:
+<<eval = FALSE>>=
+install.packages('devtools')
+library(devtools)
+install_github('fawda123/WRTDStidal')
+library(WRTDStidal)
+@
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+<<eval = F>>=
+# change as needed
+path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal-0.0.49.9000.tar.gz'
+
+# install, load
+install.packages(path_to_file, repos = NULL, type="source")
+library(WRTDStidal)
+@
+\end{frame}
+
+\section{Overview}
+
+<<echo = F, cache = TRUE, eval = T, message = F, results = 'hide'>>=
+data(wrtdsobs)
+
+pal <- function(x) RColorBrewer::brewer.pal(x, 'GnBu')
+num_col <- 5
+
+# model subset and plot subsets
+mod <- wrtdsobs
+ylab <-  expression(paste("DIN (mg ", L^-1, ")"))
+xlims <- as.Date(c('1976-01-01', '2013-12-31'))
+ylims <- c(0, 6)
+
+annuals <- prdnrmplot(mod, annuals = TRUE, plot = F) %>%
+  .$nrms %>% 
+  filter(taus == 0.5)
+seasnls <- prdnrmplot(mod, annuals = FALSE, plot = F) %>%
+  .$nrms %>% 
+  filter(taus == 0.5)
+residus <- select(mod, date, res, fit0.5) %>% 
+  mutate(resfit = exp(res) - exp(fit0.5)) %>% 
+  na.omit()
+
+# default theme
+mytheme <- theme_minimal() + 
+  theme(
+    plot.background = element_rect(fill='transparent', 
+      colour = NA),
+    panel.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.key = element_rect(fill = 'transparent', 
+      colour = NA),
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm"), 
+    panel.grid.major = element_line(colour = pal(num_col)[3]),
+    panel.grid.minor = element_line(colour = pal(num_col)[2])
+    )   
+
+# plots
+p1 <- ggplot(na.omit(mod), aes(x = date, y = exp(res))) + 
+  geom_line() +
+  mytheme +
+  scale_y_continuous(ylab, limits = c(0, 4)) + 
+  scale_x_date('Time', limits = xlims)
+
+p2 <- ggplot(annuals, aes(x = date, y = exp(nrms_value))) + 
+  geom_line() + 
+  mytheme +
+  scale_y_continuous(ylab, limits = c(0, 4)) + 
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  scale_x_date('Time', limits = xlims) + 
+  ggtitle('Annual')
+
+p3 <- ggplot(seasnls, aes(x = date, y = exp(nrms_value))) + 
+  geom_line() + 
+  mytheme +
+  scale_y_continuous(ylab) + 
+  scale_x_date('Time', limits = xlims) + 
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  ggtitle('Seasonal')
+
+p4 <- ggplot(residus, aes(x = date, y = resfit)) + 
+  geom_point() + 
+  geom_hline(aes(yintercept = 0)) + 
+  mytheme +
+  scale_y_continuous(ylab) + 
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  scale_x_date('Time', limits = xlims) + 
+  ggtitle('Residual')
+
+p5 <- dynaplot(mod, mo = 1, logspace = F, years = c(1976, 2000, 2013), col_vec = 'black') + 
+  mytheme +
+  theme(
+    legend.position = 'none', 
+    strip.text.x = element_blank(),
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  scale_y_continuous(ylab) + 
+  scale_x_continuous('Flow') + 
+  ggtitle('Flow effects')
+
+pdf('imgs/ts_ex.pdf', height = 2, width = 12, family = 'serif')
+p1
+dev.off()
+
+ht <- 1.75
+wd <- 4.5
+
+pdf('imgs/schematic2.pdf', height = ht, width = wd, family = 'serif')
+p2
+dev.off()
+pdf('imgs/schematic3.pdf', height = ht, width = wd, family = 'serif')
+p3
+dev.off()
+pdf('imgs/schematic4.pdf', height = ht, width = wd, family = 'serif')
+p4
+dev.off()
+pdf('imgs/schematic5.pdf', height = ht, width = wd, family = 'serif')
+p5
+dev.off()
+@
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}{}
+{\bf \centerline{Observed data represents effects of many processes}}
+\vspace{0.15in}
+\centerline{\includegraphics[width = \textwidth]{imgs/ts_ex.pdf}}
+\vspace{0.15in}
+\begin{columns}[t]
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Climate}}}\\
+precipitation\\
+temperature\\
+wind events\\
+ENSO effects
+\end{column}
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Local}}}\\
+light/turbidity\\
+residence time\\
+invasive species\\
+trophic effects
+\end{column}
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Regional/historical}}}\\
+watershed inputs\\
+point sources\\
+management actions
+flow changes
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}
+\onslide<+->
+{\bf \centerline{Observed data represents effects of many processes}}
+\vspace{0.15in}
+\centerline{\includegraphics[width = \textwidth]{imgs/ts_ex.pdf}}
+\centerline{Models should describe components to evaluate effects}
+\vspace{-0.1in}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\onslide<+->{
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic2.pdf}}
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic3.pdf}}
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+\onslide<+->{
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic4.pdf}}
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic5.pdf}}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}
+\onslide<+->
+\textbf{W}eighted \textbf{R}egression on \textbf{T}ime, \textbf{D}ischarge, and \textbf{S}eason \\~\\
+\begin{itemize}
+\item Describes a time series in the context of these parameters, locally fitted \\~\\
+\item Useful to describe long-term trends, ie., multi-decadal time series \\~\\
+\item Evaluation of flow-normalized trends, hypothesis generation
+\end{itemize}
+\onslide<+->
+\vspace{0.1in}
+Developed by \cite{Hirsch10} for pollutants in stream/rivers\\~\\
+Adapted for tidal waters by \cite{Beck15}
+\end{frame}
+
+<<echo = F, results = 'hide', warning = F, message = F>>=
+data(wrtdsobs)
+
+tmp <- select(wrtdsobs, date, res, flo, dec_time) %>% 
+  na.omit
+
+mod1 <- lm(res ~ flo, tmp)
+mod2 <- lm(res ~ dec_time, tmp)
+mod3 <- lm(res ~ sin(2 * pi * dec_time) + cos(2 * pi * dec_time), tmp)
+mod4 <- lm(res ~ flo + dec_time, tmp)
+mod5 <- lm(res ~ flo + dec_time + sin(2 * pi * dec_time) + cos(2 * pi * dec_time), tmp)
+
+toplo <- cbind(tmp, 
+  mod1 = predict(mod1), 
+  mod2 = predict(mod2), 
+  mod3 = predict(mod3), 
+  mod4 = predict(mod4), 
+  mod5 = predict(mod5)
+)
+
+# default theme
+mytheme <- theme_minimal() + 
+  theme(
+    plot.background = element_rect(fill='transparent', 
+      colour = NA),
+    panel.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.key = element_rect(fill = 'transparent', 
+      colour = NA),
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm"), 
+    panel.grid.major = element_line(colour = pal(num_col)[3]),
+    panel.grid.minor = element_line(colour = pal(num_col)[2]), 
+    axis.title.x = element_blank()
+    )   
+
+pbase <- ggplot(toplo, aes(x = date, y = res)) + 
+  geom_point(alpha = 0.7) + 
+  scale_y_continuous('ln-Nitrogen') + 
+  mytheme
+
+p1 <- pbase + 
+  geom_line(aes(y = mod1), colour = 'blue') + 
+  ggtitle('ln(N) ~ ln(Sal)')
+p2 <- pbase + 
+  geom_line(aes(y = mod2), colour = 'blue') + 
+  ggtitle('ln(N) ~ t')
+p3 <- pbase + 
+  geom_line(aes(y = mod3), colour = 'blue') + 
+  ggtitle('ln(N) ~ cos(2pi * t) + sin(2pi * t)')
+p4 <- pbase + 
+  geom_line(aes(y = mod4), colour = 'blue') + 
+  ggtitle('ln(N) ~ t + ln(Sal)')
+p5 <- pbase + 
+  geom_line(aes(y = mod5), colour = 'blue') + 
+  ggtitle('ln(N) ~ t + ln(Sal) + cos(2pi * t) + sin(2pi * t)')
+
+pdf('imgs/wrtds_pieces.pdf', family = 'serif', height = 2.5, width = 7)
+print(p1)
+print(p2)
+print(p3)
+print(p4)
+print(p5)
+dev.off()
+@
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}{}
+\onslide<1->
+How does it work?  
+\begin{center}
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$\\~\\
+$N$: nitrogen (or other response endpoint)\\
+$t$: time\\
+$Sal$: Salinity (or other flow-related variable)
+\end{center}
+\includegraphics<2>[width = \textwidth, page = 1]{imgs/wrtds_pieces.pdf}
+\includegraphics<3>[width = \textwidth, page = 2]{imgs/wrtds_pieces.pdf}
+\includegraphics<4>[width = \textwidth, page = 3]{imgs/wrtds_pieces.pdf}
+\includegraphics<5>[width = \textwidth, page = 4]{imgs/wrtds_pieces.pdf}
+\includegraphics<6>[width = \textwidth, page = 5]{imgs/wrtds_pieces.pdf}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}{}
+This is not the whole story...
+\begin{center}
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$
+\end{center}
+One parameter set to many parameter sets - a moving window regression \\~\\
+Within each window, a unique regression is fit, weighted by the local salinity, time, and season \\~\\
+Similar to a loess/spline smooth but specific to the effects of these three variables on the response
+\end{frame}
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}
+\begin{center}
+\animategraphics[controls,width=\linewidth]{10}{imgs/wtex}{}{} %frame rate is 12 per/sec
+\end{center}
+\end{frame}
+
+<<echo = F, results = 'hide', warning = F, message = F, eval = F>>=
+data(wrtdsobs)
+
+toplo <- select(wrtdsobs, date, res, flo, lim) %>% 
+  na.omit %>% 
+  tidalmean %>% 
+  .[163:400,]
+
+# default theme
+mytheme <- theme_minimal() + 
+  theme(
+    plot.background = element_rect(fill='transparent', 
+      colour = NA),
+    panel.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.key = element_rect(fill = 'transparent', 
+      colour = NA),
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm"), 
+    panel.grid.major = element_line(colour = pal(num_col)[3]),
+    panel.grid.minor = element_line(colour = pal(num_col)[2]), 
+    axis.title.x = element_blank()
+    )   
+
+pbase <- ggplot(toplo, aes(x = date, y = res)) + 
+  mytheme
+
+rows <- 1:nrow(tmp)
+modwt <- NULL
+
+pdf('imgs/wrtds_pieces2.pdf', family = 'serif', height = 2.5, width = 7)
+
+for(i in rows){
+
+  cat(i, '\t')
+
+  wts <- getwts(tmp, tmp[i, ])
+  mod <- lm(res ~ flo + dec_time + sin(2 * pi * dec_time) + cos(2 * pi * dec_time), weights = wts, tmp)
+  mod <- predict(mod)
+  
+  modwt <- c(modwt, mod[i])
+  modwtplo <- data.frame(date = tmp$date[1:i], res = modwt)
+  pts <- data.frame(date = tmp$date[i], res = mod[i])
+  
+  wtsplo <- scales::rescale(wts, c(0.5, 8))
+  colvec <- rep('black', length = length(wts))
+  colvec[wts == 0] <- 'darkgrey'
+  
+  p <- pbase + 
+    geom_point(aes(y = res), size = wtsplo, alpha = 0.8, colour = colvec) + 
+    geom_line(aes(y = mod), colour = 'blue') + 
+    geom_line(data = modwtplo, aes(x = date, y = res), colour = 'red') + 
+    geom_point(data = pts, colour = 'green', size = 3) + 
+    scale_y_continuous('ln-Nitrogen', limits = range(tmp$res)) +
+    ggtitle(paste('Time step', i))
+  
+  print(p)
+  
+}
+dev.off()
+
+@
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}{}
+{\small
+\Bigtxt{Points}: observed time series (black are weighted, grey is zero weight)\\
+\Bigtxt{Green point}: observation at the center of the regression\\
+\Bigtxt{Blue line}: Global model with weights specific to the window\\
+\Bigtxt{Red line}: Accumulated WRTDS model
+}
+\begin{center}
+\animategraphics[controls,width=\linewidth]{10}{imgs/wrtds_pieces2}{}{} %frame rate is 12 per/sec
+\end{center}
+\end{frame}
+
+<<echo = F, results = 'hide', message = F, warning = F, eval = F>>=
+data(wrtdsobs)
+
+tomod <- select(wrtdsobs, date, res, flo, lim) %>% 
+  na.omit %>% 
+  tidalmean
+
+mod1 <- lm(res ~ flo + dec_time + sin(2 * pi * dec_time) + cos(2 * pi * dec_time), topmod)
+mod2 <- modfit(tomod)
+
+toplo <- data.frame(date = tomod$date, Obs = tomod$res, Unweighted = predict(mod1), WRTDS = mod2$fits) %>% 
+  gather('Model', 'Estimate', Unweighted:WRTDS)
+
+# default theme
+mytheme <- theme_minimal() + 
+  theme(
+    plot.background = element_rect(fill='transparent', 
+      colour = NA),
+    panel.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.key = element_rect(fill = 'transparent', 
+      colour = NA),
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm"), 
+    panel.grid.major = element_line(colour = pal(num_col)[3]),
+    panel.grid.minor = element_line(colour = pal(num_col)[2]), 
+    axis.title.x = element_blank(), 
+    legend.position = 'top'
+    )   
+
+p <- ggplot(toplo, aes(x = date, y = Obs)) + 
+  geom_point(alpha = 0.5, size = 0.5) +
+  geom_line(aes(y = Estimate, colour = Model)) + 
+  mytheme + 
+  scale_y_continuous('ln-Nitrogen')
+
+pdf('imgs/wrtds_perf.pdf', family = 'serif', height = 2.5, width = 7)
+print(p)
+dev.off()
+
+fits <- group_by(toplo, Model) %>% 
+  summarise(rmse = sqrt(sum((Obs - Estimate)^2)/length(Obs)))
+@
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}{}
+\centerline{RMSE fit for unweighted = 0.58, WRTDS = 0.36}
+\begin{center}
+\includegraphics[width = \textwidth]{imgs/wrtds_perf.pdf}
+\end{center}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}{}
+\onslide<1->
+All you need to know: \\~\\
+\begin{itemize}
+\item<1-> Describe a response variable in relation to time, salinity (discharge), and season \\~\\
+\item<2-> A `moving window, weighted regression', like a loess/spline smooth \\~\\
+\item<3-> WRTDStidal package does all of it for you - including viz
+\end{itemize}
+\vspace{0.2in}
+\onslide<4->
+...let's not forget about flow-normalization, more about this later
+\end{frame}
+
+\section{Application}
+
+%%%%%%
+\begin{frame}{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+
+
+\end{frame}
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\vspace{0.5in}
+\centerline{Up next... Time Series Topic 2: Decomposition}
+\vspace{0.5in}
+\Large
+\centerline{\Bigtxt{Questions??}}
+\end{frame}
+
+%%%%%%
+\section{References}
+\begin{frame}[t]{\textbf{References}}
+\tiny
+\setbeamertemplate{bibliography item}{}
+\bibliographystyle{apalike_mine}
+\bibliography{refs}
+\end{frame}
+\end{document}

@@ -1,0 +1,347 @@
+\documentclass[xcolor=dvipsnames,serif]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usetheme{Boadilla}
+\usecolortheme[named=CornflowerBlue]{structure}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage[draft]{animate}
+\usepackage{lmodern}
+\usetikzlibrary{shadows,arrows,positioning}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=links,urlcolor=links}
+\usepackage{pgfpages}
+
+\tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+% change font of frame titles and title slide
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries} 
+
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+
+\newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\title[WRTDS]{Time series topic 1: Weighted regression}
+
+\author[M. Beck]{Marcus W. Beck\inst{1}}
+
+\date{}
+
+\institute[]{\inst{1} USEPA NHEERL Gulf Ecology Division\\ Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}}
+
+% knitr setup
+
+
+% dependents
+
+
+% get online bib file
+
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\titlepage
+\end{frame}
+
+\section{Overview}
+
+%%%%%%
+\begin{frame}{Objectives for the session (2:00 - 3:00)}
+\begin{itemize}
+\item What is weighted regression \\~\\
+\item The WRTDStidal package \\~\\
+\item Application to NERRS data \\~\\
+\begin{itemize}
+\item Fitting a model \\~\\
+\item Evaluating a model \\~\\
+\item Viewing a model\\~\\
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Interactive portion}
+\onslide<+->
+Follow along as we go:\\~\\
+\begin{itemize}
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2016 workshop tab \\~\\
+\end{itemize}
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}} 
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use the WRTDStidal package \\~\\
+Option 1, from the R Console prompt:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'devtools'}\hlstd{)}
+\hlkwd{library}\hlstd{(devtools)}
+\hlkwd{install_github}\hlstd{(}\hlstr{'fawda123/WRTDStidal'}\hlstd{)}
+\hlkwd{library}\hlstd{(WRTDStidal)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# change as needed}
+\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/WRTDStidal-0.0.49.9000.tar.gz'}
+
+\hlcom{# install, load}
+\hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
+\hlkwd{library}\hlstd{(WRTDStidal)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+\section{Overview}
+
+
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}{}
+{\bf \centerline{Observed data represents effects of many processes}}
+\vspace{0.15in}
+\centerline{\includegraphics[width = \textwidth]{imgs/ts_ex.pdf}}
+\vspace{0.15in}
+\begin{columns}[t]
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Climate}}}\\
+precipitation\\
+temperature\\
+wind events\\
+ENSO effects
+\end{column}
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Local}}}\\
+light/turbidity\\
+residence time\\
+invasive species\\
+trophic effects
+\end{column}
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Regional/historical}}}\\
+watershed inputs\\
+point sources\\
+management actions
+flow changes
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}
+\onslide<+->
+{\bf \centerline{Observed data represents effects of many processes}}
+\vspace{0.15in}
+\centerline{\includegraphics[width = \textwidth]{imgs/ts_ex.pdf}}
+\centerline{Models should describe components to evaluate effects}
+\vspace{-0.1in}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\onslide<+->{
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic2.pdf}}
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic3.pdf}}
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+\onslide<+->{
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic4.pdf}}
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic5.pdf}}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}
+\onslide<+->
+\textbf{W}eighted \textbf{R}egression on \textbf{T}ime, \textbf{D}ischarge, and \textbf{S}eason \\~\\
+\begin{itemize}
+\item Describes a time series in the context of these parameters, locally fitted \\~\\
+\item Useful to describe long-term trends, ie., multi-decadal time series \\~\\
+\item Evaluation of flow-normalized trends, hypothesis generation
+\end{itemize}
+\onslide<+->
+\vspace{0.1in}
+Developed by \cite{Hirsch10} for pollutants in stream/rivers\\~\\
+Adapted for tidal waters by \cite{Beck15}
+\end{frame}
+
+
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}{}
+\onslide<1->
+How does it work?  
+\begin{center}
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$\\~\\
+$N$: nitrogen (or other response endpoint)\\
+$t$: time\\
+$Sal$: Salinity (or other flow-related variable)
+\end{center}
+\includegraphics<2>[width = \textwidth, page = 1]{imgs/wrtds_pieces.pdf}
+\includegraphics<3>[width = \textwidth, page = 2]{imgs/wrtds_pieces.pdf}
+\includegraphics<4>[width = \textwidth, page = 3]{imgs/wrtds_pieces.pdf}
+\includegraphics<5>[width = \textwidth, page = 4]{imgs/wrtds_pieces.pdf}
+\includegraphics<6>[width = \textwidth, page = 5]{imgs/wrtds_pieces.pdf}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Model theory and background - what is WRTDS}{}
+This is not the whole story...
+\begin{center}
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$
+\end{center}
+One parameter set to many parameter sets - a moving window regression \\~\\
+Within each window, a unique regression is fit, weighted by the local salinity, time, and season \\~\\
+Similar to a loess/spline smooth but specific to the effects of these three variables on the response
+\end{frame}
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}
+\begin{center}
+\animategraphics[controls,width=\linewidth]{10}{imgs/wtex}{}{} %frame rate is 12 per/sec
+\end{center}
+\end{frame}
+
+
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}{}
+{\small
+\Bigtxt{Points}: observed time series (black are weighted, grey is zero weight)\\
+\Bigtxt{Green point}: observation at the center of the regression\\
+\Bigtxt{Blue line}: Global model with weights specific to the window\\
+\Bigtxt{Red line}: Accumulated WRTDS model
+}
+\begin{center}
+\animategraphics[controls,width=\linewidth]{10}{imgs/wrtds_pieces2}{}{} %frame rate is 12 per/sec
+\end{center}
+\end{frame}
+
+
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}{}
+\centerline{RMSE fit for unweighted = 0.58, WRTDS = 0.36}
+\begin{center}
+\includegraphics[width = \textwidth]{imgs/wrtds_perf.pdf}
+\end{center}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Model theory and background - what is WRTDS}{}
+\onslide<1->
+All you need to know: \\~\\
+\begin{itemize}
+\item<1-> Describe a response variable in relation to time, salinity (discharge), and season \\~\\
+\item<2-> A `moving window, weighted regression', like a loess/spline smooth \\~\\
+\item<3-> WRTDStidal package does all of it for you - including viz
+\end{itemize}
+\vspace{0.2in}
+\onslide<4->
+...let's not forget about flow-normalization, more about this later
+\end{frame}
+
+\section{Application}
+
+%%%%%%
+\begin{frame}{Using WRTDS with NERRS data}{}
+
+
+\end{frame}
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\vspace{0.5in}
+\centerline{Up next... Time Series Topic 2: Decomposition}
+\vspace{0.5in}
+\Large
+\centerline{\Bigtxt{Questions??}}
+\end{frame}
+
+%%%%%%
+\section{References}
+\begin{frame}[t]{\textbf{References}}
+\tiny
+\setbeamertemplate{bibliography item}{}
+\bibliographystyle{apalike_mine}
+\bibliography{refs}
+\end{frame}
+\end{document}

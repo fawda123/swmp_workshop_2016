@@ -30,9 +30,11 @@ Overview of <a href="http://swmprats.net" target = "_parent">SWMPrats</a> websit
 Overview of interactive <a href="http://swmprats.net/swmp-widgets" target = "_parent">widgets</a>
 
 * SWMP summary plots - evaluate trends of a single parameter at a single site  
-* SWMP trend maps - compare trends of a single parameter at multiple sites and reserves using a map
+* SWMP trend maps - compare trends of a single parameter within and between reserves using a map
 * SWMP aggregations - compare aggregated trends of different parameters within and between reserves
-    
+
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module1_widgets/widgets.pdf" target = "_parent">presentation</a>    
+
 ### 2:00pm Time Series Topic 1
 
 Topic 1: Weighted regression in tidal waters

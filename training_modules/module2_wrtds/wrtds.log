@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  31 OCT 2016 13:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  31 OCT 2016 17:07
 entering extended mode
-**widgets.tex
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.tex
+**wrtds.tex
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -1130,7 +1130,80 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 ibraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-("C:\Program Files\MiKTeX 2.9\tex\latex\lm\lmodern.sty"
+(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\animate\animate.sty
+Package: animate 2014/11/11 PDF animations from files and inline graphics
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\ifdraft.sty"
+Package: ifdraft 2008/08/11 v1.3 Detect class options draft and final (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\atenddvi.sty"
+Package: atenddvi 2007/04/17 v1.1 At end DVI hook (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\zref-abspage.sty"
+Package: zref-abspage 2012/04/04 v2.24 Module abspage for zref (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\zref-base.sty"
+Package: zref-base 2012/04/04 v2.24 Module base for zref (HO)
+Package zref Info: New property list: main on input line 759.
+Package zref Info: New property: default on input line 760.
+Package zref Info: New property: page on input line 761.
+)
+\c@abspage=\count283
+Package zref Info: New property: abspage on input line 62.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\zref-lastpage.sty"
+Package: zref-lastpage 2012/04/04 v2.24 Module lastpage for zref (HO)
+Package zref Info: New property list: LastPage on input line 55.
+))
+(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\animate\animfp.sty
+Package: animfp 2009/07/23 fixed point addition for animate.sty
+\afp@xs=\count284
+\afp@xia=\count285
+\afp@xib=\count286
+\afp@xfa=\count287
+\afp@xfb=\count288
+\afp@rega=\count289
+\afp@regb=\count290
+\afp@regs=\count291
+)
+(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count292
+\scratchdimen=\dimen327
+\scratchbox=\box80
+\nofMPsegments=\count293
+\nofMParguments=\count294
+\everyMPshowfont=\toks50
+\MPscratchCnt=\count295
+\MPscratchDim=\dimen328
+\MPnumerator=\count296
+\makeMPintoPDFobject=\count297
+\everyMPtoPDFconversion=\toks51
+)
+\@anim@box=\box81
+\@anim@measbox=\box82
+\@anim@tmpdima=\dimen329
+\@anim@tmpdimb=\dimen330
+\@anim@ocnum=\count298
+\@anim@num=\count299
+\@anim@curframe=\count300
+\@anim@curframe@zb=\count301
+\@anim@resizeflags=\count302
+\@anim@skipfram=\count303
+\@anim@mulframecnt=\count304
+\@anim@@tmlnfile=\read3
+\@anim@tmpcnt=\count305
+\c@@anim@ltxcnt=\count306
+\@anim@curlayer=\count307
+\@anim@lineno=\count308
+\@anim@curfield=\count309
+\@anim@begin=\toks52
+\@anim@end=\toks53
+\@anim@@resizeflags=\count310
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\lmodern.sty"
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -1184,25 +1257,25 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrary
 arrows.code.tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
-\arrowsize=\dimen327
+\arrowsize=\dimen331
 ))
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
 ibraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 63.
+Package hyperref Info: Option `colorlinks' set `true' on input line 64.
 
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfpages.sty
 Package: pgfpages 2011/01/05 ver 0.02
-\pgf@logicalpages=\count283
-\pgf@firstshipout=\count284
-\pgf@lastshipout=\count285
-\pgf@currentshipout=\count286
-\pgf@cpn=\count287
-\pgf@shipoutnextto=\count288
-\pgfphysicalheight=\dimen328
-\pgfphysicalwidth=\dimen329
-\pgfpages@shipoutbox=\box80
+\pgf@logicalpages=\count311
+\pgf@firstshipout=\count312
+\pgf@lastshipout=\count313
+\pgf@currentshipout=\count314
+\pgf@cpn=\count315
+\pgf@shipoutnextto=\count316
+\pgfphysicalheight=\dimen332
+\pgfphysicalwidth=\dimen333
+\pgfpages@shipoutbox=\box83
 ) (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\upquote\upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
@@ -1288,29 +1361,29 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 ))
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 77.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 76.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 77.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1349,22 +1422,9 @@ File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count289
-\scratchdimen=\dimen330
-\scratchbox=\box81
-\nofMPsegments=\count290
-\nofMParguments=\count291
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count292
-\MPscratchDim=\dimen331
-\MPnumerator=\count293
-\makeMPintoPDFobject=\count294
-\everyMPtoPDFconversion=\toks51
-) ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box82
-Package hyperref Info: Link coloring ON on input line 76.
+ABD: EveryShipout initializing macros
+\AtBeginShipoutBox=\box84
+Package hyperref Info: Link coloring ON on input line 77.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1372,53 +1432,53 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count295
+\c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 77.
+LaTeX Info: Redefining \pageref on input line 77.
+LaTeX Info: Redefining \nameref on input line 77.
 
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.out)
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.out)
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.out)
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.out)
 \@outlinefile=\write5
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/lmr/m/n on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 76.
+(Font)                  OT1/lmr/m/n --> OT1/lmr/m/n on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> OT1/lmss/m/n on input line 76.
+(Font)                  OT1/lmss/m/n --> OT1/lmss/m/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> OT1/lmss/m/n on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 76.
+(Font)                  OT1/lmss/bx/n --> OT1/lmss/m/n on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> OT1/lmr/m/it on input line 76.
+(Font)                  OT1/lmr/m/it --> OT1/lmr/m/it on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> OT1/lmr/m/it on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 76.
+(Font)                  OT1/lmr/bx/it --> OT1/lmr/m/it on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 76.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 76.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 77.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/lmr/m/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/m/n --> OT1/lmr/bx/n on input line 77.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 76.
+(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 76.
+(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 76.
+(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/bx/n on input line 76.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/bx/n on input line 77.
 
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\beamer\base\translator\dic
 ts\translator-basic-dictionary\translator-basic-dictionary-English.dict
@@ -1446,157 +1506,207 @@ Dictionary: translator-numbers-dictionary, Language: English
 ts\translator-theorem-dictionary\translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 76.
+LaTeX Info: Redefining \includegraphics on input line 77.
 
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.nav)
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.nav)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 80.
+(hyperref)                setting the option has no effect on input line 81.
 
-<imgs/workshop2016logo.png, id=49, 1123.19624pt x 219.06844pt>
+<imgs/workshop2016logo.png, id=53, 1123.19624pt x 219.06844pt>
 File: imgs/workshop2016logo.png Graphic file (type png)
 
 <use imgs/workshop2016logo.png>
-Package pdftex.def Info: imgs/workshop2016logo.png used on input line 100.
+Package pdftex.def Info: imgs/workshop2016logo.png used on input line 104.
 (pdftex.def)             Requested size: 308.06367pt x 60.08188pt.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 100.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 104.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 100
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 104
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 100
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 104
 .
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 100.
+(Font)              <10.95> on input line 104.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 100.
+(Font)              <8> on input line 104.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 100.
-LaTeX Font Info:    Try loading font information for U+msa on input line 100.
+(Font)              <6> on input line 104.
+LaTeX Font Info:    Try loading font information for U+msa on input line 104.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 100.
+LaTeX Font Info:    Try loading font information for U+msb on input line 104.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 100.
+(Font)              <5> on input line 104.
  [1
 
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <M:/docs/swm
-p_workshop_2016/training_modules/module1_widgets/imgs/workshop2016logo.png>] [2
+p_workshop_2016/training_modules/module2_wrtds/imgs/workshop2016logo.png>] [2
 
 ]
-<imgs/swmprat.png, id=118, 255.95625pt x 204.01219pt>
+<imgs/swmprat.png, id=122, 255.95625pt x 204.01219pt>
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 129.
+Package pdftex.def Info: imgs/swmprat.png used on input line 133.
 (pdftex.def)             Requested size: 51.3422pt x 40.92311pt.
 
 [3
 
- <M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/swmprat.png>
-]
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/swmprat.png>]
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 129.
+Package pdftex.def Info: imgs/swmprat.png used on input line 133.
 (pdftex.def)             Requested size: 51.3422pt x 40.92311pt.
  [4
 
 ]
-<imgs/swmprats_logo.png, id=171, 718.93594pt x 141.52875pt>
-File: imgs/swmprats_logo.png Graphic file (type png)
-
-<use imgs/swmprats_logo.png>
-Package pdftex.def Info: imgs/swmprats_logo.png used on input line 141.
-(pdftex.def)             Requested size: 325.17949pt x 64.0156pt.
- [5
-
- <M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/swmprats_log
-o.png>]
-<imgs/work1.jpg, id=202, 271.0125pt x 202.7575pt>
-File: imgs/work1.jpg Graphic file (type jpg)
- <use imgs/work1.jpg>
-Package pdftex.def Info: imgs/work1.jpg used on input line 158.
-(pdftex.def)             Requested size: 128.36073pt x 96.03546pt.
-
-<imgs/work2.jpg, id=203, 271.0125pt x 271.0125pt>
-File: imgs/work2.jpg Graphic file (type jpg)
- <use imgs/work2.jpg>
-Package pdftex.def Info: imgs/work2.jpg used on input line 158.
-(pdftex.def)             Requested size: 92.41856pt x 92.41595pt.
- [6
-
- <M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/work1.jpg> <
-M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/work2.jpg>]
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.vrb
-<imgs/swmpr_logo.png, id=231, 716.4366pt x 185.9748pt>
-File: imgs/swmpr_logo.png Graphic file (type png)
-
-<use imgs/swmpr_logo.png>
-Package pdftex.def Info: imgs/swmpr_logo.png used on input line 2.
-(pdftex.def)             Requested size: 290.9531pt x 75.52936pt.
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.vrb
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 7.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmtt.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmtt.fd"
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <8> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 9.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 9.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 8.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 8.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [7
+))
+File: imgs/swmprat.png Graphic file (type png)
 
- <M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/swmpr_logo.p
-ng>]
-File: imgs/swmprats_logo.png Graphic file (type png)
-
-<use imgs/swmprats_logo.png>
-Package pdftex.def Info: imgs/swmprats_logo.png used on input line 187.
-(pdftex.def)             Requested size: 256.72147pt x 50.53783pt.
- [8
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 165.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [5
 
 ]
-<imgs/swmp_summary.png, id=289, 938.75719pt x 697.10437pt>
-File: imgs/swmp_summary.png Graphic file (type png)
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.vrb)
+File: imgs/swmprat.png Graphic file (type png)
 
-<use imgs/swmp_summary.png>
-Package pdftex.def Info: imgs/swmp_summary.png used on input line 207.
-(pdftex.def)             Requested size: 97.55482pt x 72.43758pt.
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 165.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [6
 
-<imgs/swmp_comp.png, id=290, 941.76843pt x 672.26157pt>
-File: imgs/swmp_comp.png Graphic file (type png)
+] <imgs/ts_ex.pdf, id=231, 867.24pt x 144.54pt>
+File: imgs/ts_ex.pdf Graphic file (type pdf)
 
-<use imgs/swmp_comp.png>
-Package pdftex.def Info: imgs/swmp_comp.png used on input line 207.
-(pdftex.def)             Requested size: 97.55482pt x 69.63043pt.
+<use imgs/ts_ex.pdf>
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 200.
+(pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
 
-<imgs/swmp_agg.png, id=291, 941.76843pt x 935.74594pt>
-File: imgs/swmp_agg.png Graphic file (type png)
- <use imgs/swmp_agg.png>
-Package pdftex.def Info: imgs/swmp_agg.png used on input line 207.
-(pdftex.def)             Requested size: 97.55482pt x 96.9212pt.
+Overfull \hbox (2.22552pt too wide) in paragraph at lines 200--200
+[]$[]$  
+ []
 
-[9
+[7
 
- <M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/swmp_summary
-.png> <M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/swmp_co
-mp.png> <M:/docs/swmp_workshop_2016/training_modules/module1_widgets/imgs/swmp_
-agg.png>] [10
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/ts_ex.pdf>]
+File: imgs/ts_ex.pdf Graphic file (type pdf)
+
+<use imgs/ts_ex.pdf>
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 224.
+(pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
+ <imgs/schematic2.pdf, id=269, 325.215pt x 126.4725pt>
+File: imgs/schematic2.pdf Graphic file (type pdf)
+
+<use imgs/schematic2.pdf>
+Package pdftex.def Info: imgs/schematic2.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+
+<imgs/schematic3.pdf, id=270, 325.215pt x 126.4725pt>
+File: imgs/schematic3.pdf Graphic file (type pdf)
+
+<use imgs/schematic3.pdf>
+Package pdftex.def Info: imgs/schematic3.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+
+<imgs/schematic4.pdf, id=271, 325.215pt x 126.4725pt>
+File: imgs/schematic4.pdf Graphic file (type pdf)
+
+<use imgs/schematic4.pdf>
+Package pdftex.def Info: imgs/schematic4.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+
+<imgs/schematic5.pdf, id=272, 325.215pt x 126.4725pt>
+File: imgs/schematic5.pdf Graphic file (type pdf)
+
+<use imgs/schematic5.pdf>
+Package pdftex.def Info: imgs/schematic5.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+ [8
+
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/schematic2.pdf
+> <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/schematic3.pd
+f> <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/schematic4.p
+df> <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/schematic5.
+pdf>]
+File: imgs/ts_ex.pdf Graphic file (type pdf)
+ <use imgs/ts_ex.pdf>
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 224.
+(pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
+File: imgs/schematic2.pdf Graphic file (type pdf)
+
+<use imgs/schematic2.pdf>
+Package pdftex.def Info: imgs/schematic2.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+File: imgs/schematic3.pdf Graphic file (type pdf)
+ <use imgs/schematic3.pdf>
+Package pdftex.def Info: imgs/schematic3.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+File: imgs/schematic4.pdf Graphic file (type pdf)
+ <use imgs/schematic4.pdf>
+Package pdftex.def Info: imgs/schematic4.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+File: imgs/schematic5.pdf Graphic file (type pdf)
+
+<use imgs/schematic5.pdf>
+Package pdftex.def Info: imgs/schematic5.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+ [9
+
+]
+File: imgs/ts_ex.pdf Graphic file (type pdf)
+ <use imgs/ts_ex.pdf>
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 224.
+(pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
+File: imgs/schematic2.pdf Graphic file (type pdf)
+ <use imgs/schematic2.pdf>
+Package pdftex.def Info: imgs/schematic2.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+File: imgs/schematic3.pdf Graphic file (type pdf)
+
+<use imgs/schematic3.pdf>
+Package pdftex.def Info: imgs/schematic3.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+File: imgs/schematic4.pdf Graphic file (type pdf)
+ <use imgs/schematic4.pdf>
+Package pdftex.def Info: imgs/schematic4.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+File: imgs/schematic5.pdf Graphic file (type pdf)
+ <use imgs/schematic5.pdf>
+Package pdftex.def Info: imgs/schematic5.pdf used on input line 224.
+(pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
+
+[10
 
 ] [11
 
@@ -1604,114 +1714,132 @@ agg.png>] [10
 
 ] [13
 
-] [14
-
 ]
-File: imgs/swmprat.png Graphic file (type png)
- <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 231.
-(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
-File: imgs/swmp_summary.png Graphic file (type png)
+<imgs/wrtds_pieces.pdf, id=464, page=1, 505.89pt x 180.675pt>
+File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
 
-<use imgs/swmp_summary.png>
-Package pdftex.def Info: imgs/swmp_summary.png used on input line 231.
-(pdftex.def)             Requested size: 273.83728pt x 203.34642pt.
+<use imgs/wrtds_pieces.pdf, page 1>
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page1 used on input line 258.
+(pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
+ [14
+
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/wrtds_pieces.p
+df>]
+<imgs/wrtds_pieces.pdf, id=500, page=2, 505.89pt x 180.675pt>
+File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
+
+<use imgs/wrtds_pieces.pdf, page 2>
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page2 used on input line 258.
+(pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
  [15
 
-] [16
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/wrtds_pieces.p
+df>]
+<imgs/wrtds_pieces.pdf, id=536, page=3, 505.89pt x 180.675pt>
+File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
 
-]
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.vrb)
-[17
+<use imgs/wrtds_pieces.pdf, page 3>
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page3 used on input line 258.
+(pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
+ [16
 
-]
-File: imgs/swmprat.png Graphic file (type png)
- <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 281.
-(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
-File: imgs/swmp_comp.png Graphic file (type png)
- <use imgs/swmp_comp.png>
-Package pdftex.def Info: imgs/swmp_comp.png used on input line 281.
-(pdftex.def)             Requested size: 273.83728pt x 195.47401pt.
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/wrtds_pieces.p
+df>]
+<imgs/wrtds_pieces.pdf, id=572, page=4, 505.89pt x 180.675pt>
+File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
+
+<use imgs/wrtds_pieces.pdf, page 4>
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page4 used on input line 258.
+(pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
+ [17
+
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/wrtds_pieces.p
+df>]
+<imgs/wrtds_pieces.pdf, id=607, page=5, 505.89pt x 180.675pt>
+File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
+
+<use imgs/wrtds_pieces.pdf, page 5>
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page5 used on input line 258.
+(pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
  [18
 
-] [19
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/wrtds_pieces.p
+df>] [19
 
 ] [20
 
 ] [21
 
 ]
+<imgs/wrtds_perf.pdf, id=725, 505.89pt x 180.675pt>
+File: imgs/wrtds_perf.pdf Graphic file (type pdf)
+ <use imgs/wrtds_perf.pdf>
+Package pdftex.def Info: imgs/wrtds_perf.pdf used on input line 301.
+(pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
+
 [22
 
-] [23
+ <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/wrtds_perf.pdf
+>] [23
 
-]
-File: imgs/swmprat.png Graphic file (type png)
- <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 306.
-(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
-File: imgs/swmp_agg.png Graphic file (type png)
- <use imgs/swmp_agg.png>
-Package pdftex.def Info: imgs/swmp_agg.png used on input line 306.
-(pdftex.def)             Requested size: 205.37926pt x 204.06567pt.
- [24
+] [24
 
 ] [25
 
 ] [26
 
-]
-[27
-
-] [28
-
-] [29
+] [27
 
 ]
 File: imgs/workshop2016logo.png Graphic file (type png)
  <use imgs/workshop2016logo.png>
-Package pdftex.def Info: imgs/workshop2016logo.png used on input line 338.
+Package pdftex.def Info: imgs/workshop2016logo.png used on input line 337.
 (pdftex.def)             Requested size: 308.06367pt x 60.08188pt.
- [30
+ [28
+
+]
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.bbl)
+Package atenddvi Info: Last page = 29.
+ [29
 
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 340.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 340.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 347.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 347.
 
-(M:\docs\swmp_workshop_2016\training_modules\module1_widgets\widgets.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 340.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 340.
-Package rerunfilecheck Info: File `widgets.out' has not changed.
-(rerunfilecheck)             Checksum: B31BDF19A18EB726674F0232212A7782;131.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 340.
+(M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 347.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 347.
+Package rerunfilecheck Info: File `wrtds.out' has not changed.
+(rerunfilecheck)             Checksum: 78C74790431FEDEFE91572A03BA7FD54;181.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 347.
  ) 
 Here is how much of TeX's memory you used:
- 28596 strings out of 493921
- 572026 string characters out of 3147282
- 590765 words of memory out of 3000000
- 31257 multiletter control sequences out of 15000+200000
- 61790 words of font info for 52 fonts, out of 3000000 for 9000
+ 29345 strings out of 493921
+ 585145 string characters out of 3147282
+ 620133 words of memory out of 3000000
+ 31978 multiletter control sequences out of 15000+200000
+ 68651 words of font info for 53 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,16n,78p,10377b,737s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rmtt.enc}{C:/Program Files
-/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX 2.9/fonts/en
-c/dvips/lm/lm-rm.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/lm/lmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt8.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on widgets.pdf (30 pages, 3260518 bytes).
+ 48i,16n,78p,10375b,737s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Fil
+es/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/e
+nc/dvips/lm/lm-rmtt.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.
+enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/lm/lmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/lm/lmri10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtk10
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/symbols/msam7.pfb>
+Output written on wrtds.pdf (29 pages, 1602429 bytes).
 PDF statistics:
- 924 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 214 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 999 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 500000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 
