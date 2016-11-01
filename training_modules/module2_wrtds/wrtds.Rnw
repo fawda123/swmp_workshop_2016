@@ -7,7 +7,7 @@
 \usepackage{booktabs}
 \usepackage{verbatim}
 \usepackage{tikz}
-\usepackage[draft]{animate}
+\usepackage[final]{animate}
 \usepackage{lmodern}
 \usetikzlibrary{shadows,arrows,positioning}
 \definecolor{links}{HTML}{2A1B81}
@@ -20,8 +20,11 @@
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{frametitle}{series=\bfseries} 
 
-\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+% enumerate style
+\setbeamertemplate{enumerate items}[circle]
 
+% my macros
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
 \newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
 
 \begin{document}
@@ -39,8 +42,8 @@
 library(knitr)
 
 # set global chunk options
-opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize')
-options(replace.assign=TRUE,width=80,digits=1)
+opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize', fig.path = 'imgs/')
+options(replace.assign=TRUE,width=80)
 @
 
 % dependents
@@ -111,15 +114,13 @@ library(WRTDStidal)
 Option 2, install the source file from the flash drive:
 <<eval = F>>=
 # change as needed
-path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal-0.0.49.9000.tar.gz'
+path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal-1.0.1.9000.tar.gz'
 
 # install, load
 install.packages(path_to_file, repos = NULL, type="source")
 library(WRTDStidal)
 @
 \end{frame}
-
-\section{Overview}
 
 <<echo = F, cache = TRUE, eval = T, message = F, results = 'hide'>>=
 data(wrtdsobs)
@@ -313,8 +314,8 @@ data(wrtdsobs)
 tmp <- select(wrtdsobs, date, res, flo, dec_time) %>% 
   na.omit
 
-mod1 <- lm(res ~ flo, tmp)
-mod2 <- lm(res ~ dec_time, tmp)
+mod1 <- lm(res ~ dec_time, tmp)
+mod2 <- lm(res ~ flo, tmp)
 mod3 <- lm(res ~ sin(2 * pi * dec_time) + cos(2 * pi * dec_time), tmp)
 mod4 <- lm(res ~ flo + dec_time, tmp)
 mod5 <- lm(res ~ flo + dec_time + sin(2 * pi * dec_time) + cos(2 * pi * dec_time), tmp)
@@ -355,19 +356,19 @@ pbase <- ggplot(toplo, aes(x = date, y = res)) +
 
 p1 <- pbase + 
   geom_line(aes(y = mod1), colour = 'blue') + 
-  ggtitle('ln(N) ~ ln(Sal)')
+  ggtitle('ln(N) ~ t')
 p2 <- pbase + 
   geom_line(aes(y = mod2), colour = 'blue') + 
-  ggtitle('ln(N) ~ t')
+  ggtitle('ln(N) ~ Sal')
 p3 <- pbase + 
   geom_line(aes(y = mod3), colour = 'blue') + 
   ggtitle('ln(N) ~ cos(2pi * t) + sin(2pi * t)')
 p4 <- pbase + 
   geom_line(aes(y = mod4), colour = 'blue') + 
-  ggtitle('ln(N) ~ t + ln(Sal)')
+  ggtitle('ln(N) ~ t + Sal')
 p5 <- pbase + 
   geom_line(aes(y = mod5), colour = 'blue') + 
-  ggtitle('ln(N) ~ t + ln(Sal) + cos(2pi * t) + sin(2pi * t)')
+  ggtitle('ln(N) ~ t + Sal + cos(2pi * t) + sin(2pi * t)')
 
 pdf('imgs/wrtds_pieces.pdf', family = 'serif', height = 2.5, width = 7)
 print(p1)
@@ -383,7 +384,7 @@ dev.off()
 \onslide<1->
 How does it work?  
 \begin{center}
-$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$\\~\\
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 Sal + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$\\~\\
 $N$: nitrogen (or other response endpoint)\\
 $t$: time\\
 $Sal$: Salinity (or other flow-related variable)
@@ -399,7 +400,7 @@ $Sal$: Salinity (or other flow-related variable)
 \begin{frame}[t]{Model theory and background - what is WRTDS}{}
 This is not the whole story...
 \begin{center}
-$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 Sal + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$
 \end{center}
 One parameter set to many parameter sets - a moving window regression \\~\\
 Within each window, a unique regression is fit, weighted by the local salinity, time, and season \\~\\
@@ -568,9 +569,182 @@ All you need to know: \\~\\
 \section{Application}
 
 %%%%%%
-\begin{frame}{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{frame}{Using WRTDS with NERRS data}{}
+\includegraphics<1>[width = \textwidth]{imgs/noc_widg1.PNG}
 
+\includegraphics<2>[width = \textwidth]{imgs/noc_widg2.PNG}
+\end{frame}
 
+%%%%%%
+\begin{frame}{Using WRTDS with NERRS data}{}
+\onslide<1-> 
+Using nutrient data from North Carolina NERR, Zeke's Basin site: \\~\\
+\begin{enumerate}
+\item<1-> Import nutrient data, organize\\~\\
+\item<2-> Import wq data, organize\\~\\
+\item<3-> Combine chlorophyll and salinity time series\\~\\
+\item<4-> Prep for WRTDS\\~\\
+\item<5-> Create WRTDS model\\~\\
+\item<6-> Assess model performance, plot results
+\end{enumerate}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\item<1-> Import nutrient data, organize
+\end{enumerate}
+\onslide<2->
+<<>>=
+# load SWMPr, nutrient data
+library(SWMPr)
+load(file = 'data/noczbnut.RData')
+
+# rename, qaqc clean up, subset
+nut <- noczbnut
+nut <- qaqc(nut, qaqc_keep = c(0, 4)) 
+nut <- subset(nut, select = 'chla_n')
+head(nut)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item<1-> Import wq data, organize
+\end{enumerate}
+\onslide<2->
+<<>>=
+# load wq data
+load(file = 'data/noczbwq.RData')
+
+# rename, qaqc clean up, subset
+wq <- noczbwq
+wq <- qaqc(wq, qaqc_keep = c(0, 4)) 
+wq <- subset(wq, select = 'sal')
+head(wq)
+@
+\end{frame}
+
+<<echo = F, results = 'hide', include = F>>=
+# combine at weekly time step
+tomod <- comb(nut, wq, timestep = 'weeks')
+
+# plot both
+pdf('imgs/chlasal-1.pdf', height = 4, width = 8, family = 'serif')
+overplot(tomod, type = c('p', 'l'))
+dev.off()
+@
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item<1-> Combine chlorophyll and salinity time series
+\end{enumerate}
+\onslide<2->
+<<chlasal, fig.height = 4, fig.width = 8, eval = F>>=
+# combine at weekly time step
+tomod <- comb(nut, wq, timestep = 'weeks')
+
+# plot both
+overplot(tomod, type = c('p', 'l'))
+@
+\includegraphics[width = \textwidth, clip=true, trim=0cm 0cm 0cm 1cm]{imgs/chlasal-1.pdf}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item<1-> Prep for WRTDS - requires a tidalmean object with four columns (date, response, salinity/flow, detection limit)
+\end{enumerate}
+\onslide<2->
+<<message = F>>=
+library(WRTDStidal)
+
+# add arbitrary limit column, datetimestamp as date
+tomod$lim <- -1e6
+tomod$datetimestamp <- as.Date(tomod$datetimestamp)
+
+# create tidalmean object, note if response is in log or not
+tomod <- tidalmean(tomod, reslog = FALSE)
+head(tomod)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item<1-> Create WRTDS model
+\end{enumerate}
+\onslide<2->
+<<>>=
+# use modfit function
+mod <- modfit(tomod)
+@
+\onslide<3->
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item<1-> Assess performance
+\end{enumerate}
+<<>>=
+wrtdsperf(mod)
+@
+\end{frame}
+<<eval = F, echo = F>>=
+modunwt <- lm(res ~ dec_time + flo + sin(2 * pi * dec_time) + cos(2 * pi * dec_time), tomod)
+sqrt(sum(resid(modunwt)^2)/length(resid(modunwt)))
+# 0.77
+@
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Plot results: fitplot shows observed, predicted, averaged by water years
+\end{enumerate}
+<<wrtdsplo1, fig.height = 3, fig.width = 8>>=
+fitplot(mod)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Plot results: prdnrmplot shows predicted, flow-normalized predictions, averaged by year
+\end{enumerate}
+<<wrtdsplo2, fig.height = 3, fig.width = 8>>=
+prdnrmplot(mod)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Plot results: gridplot shows how the flow, chlorophyll response has changed by season, year
+\end{enumerate}
+<<wrtdsplo3, fig.height = 4, fig.width = 8>>=
+gridplot(mod, logspace = F, month = 'all', floscl = F)
+@
+\end{frame}
+
+\section{Summary}
+
+%%%%%%
+\begin{frame}{WRTDS summary}{}
+\begin{itemize}
+\item<1-> WRTDS has value for describing decadal trends in the unique context of time, discharge (salinity), and season \\~\\
+\item<2-> Flow-normalized results provide a more `genuine' description of the trend \\~\\
+\item<3-> Just have a general idea of the theory, WRTDStidal package does the heavy lifting for you \\~\\
+\item<4-> Lots shown here, the code can be used step-by-step with other stations \\~\\
+\end{itemize}
+\onslide<5->
+Checkout the references and the website for more info: \href{https://github.com/fawda123/WRTDStidal}{https://github.com/fawda123/WRTDStidal}
 \end{frame}
 
 %%%%%%

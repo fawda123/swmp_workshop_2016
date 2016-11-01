@@ -17,13 +17,13 @@ library(WRTDStidal)
 
 ### Option 2
 
-1) Download the source file: [v0.0.49.9000.tar.gz](https://github.com/fawda123/WRTDStidal/archive/v0.0.49.9000.tar.gz)
+1) Download the source file: [v1.0.1.9000.tar.gz](https://github.com/fawda123/WRTDStidal/archive/v1.0.1.9000.tar.gz)
 
 2) Install the file using the full file path
 
 ```{r eval = F}
 # change as needed
-path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal-0.0.49.9000.tar.gz'
+path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal-1.0.1.9000.tar.gz'
 
 # install, load
 install.packages(path_to_file, repos = NULL, type="source")

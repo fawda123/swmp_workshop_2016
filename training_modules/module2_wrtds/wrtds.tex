@@ -57,7 +57,7 @@
 \usepackage{booktabs}
 \usepackage{verbatim}
 \usepackage{tikz}
-\usepackage[draft]{animate}
+\usepackage[final]{animate}
 \usepackage{lmodern}
 \usetikzlibrary{shadows,arrows,positioning}
 \definecolor{links}{HTML}{2A1B81}
@@ -70,8 +70,11 @@
 \setbeamerfont{title}{series=\bfseries}
 \setbeamerfont{frametitle}{series=\bfseries} 
 
-\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+% enumerate style
+\setbeamertemplate{enumerate items}[circle]
 
+% my macros
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
 \newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
@@ -154,7 +157,7 @@ Option 2, install the source file from the flash drive:
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# change as needed}
-\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/WRTDStidal-0.0.49.9000.tar.gz'}
+\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/WRTDStidal-1.0.1.9000.tar.gz'}
 
 \hlcom{# install, load}
 \hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
@@ -163,8 +166,6 @@ Option 2, install the source file from the flash drive:
 \end{kframe}
 \end{knitrout}
 \end{frame}
-
-\section{Overview}
 
 
 
@@ -245,7 +246,7 @@ Adapted for tidal waters by \cite{Beck15}
 \onslide<1->
 How does it work?  
 \begin{center}
-$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$\\~\\
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 Sal + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$\\~\\
 $N$: nitrogen (or other response endpoint)\\
 $t$: time\\
 $Sal$: Salinity (or other flow-related variable)
@@ -261,7 +262,7 @@ $Sal$: Salinity (or other flow-related variable)
 \begin{frame}[t]{Model theory and background - what is WRTDS}{}
 This is not the whole story...
 \begin{center}
-$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 \ln\left(Sal\right) + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$
+$\ln\left(N\right) = \beta_0 + \beta_1 t + \beta_2 Sal + \beta_3 \sin\left(2\pi t\right) + \beta_4 \cos\left(2\pi t\right)$
 \end{center}
 One parameter set to many parameter sets - a moving window regression \\~\\
 Within each window, a unique regression is fit, weighted by the local salinity, time, and season \\~\\
@@ -318,8 +319,268 @@ All you need to know: \\~\\
 
 %%%%%%
 \begin{frame}{Using WRTDS with NERRS data}{}
+\includegraphics<1>[width = \textwidth]{imgs/noc_widg1.PNG}
+
+\includegraphics<2>[width = \textwidth]{imgs/noc_widg2.PNG}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Using WRTDS with NERRS data}{}
+\onslide<1-> 
+Using nutrient data from North Carolina NERR, Zeke's Basin site: \\~\\
+\begin{enumerate}
+\item<1-> Import nutrient data, organize\\~\\
+\item<2-> Import wq data, organize\\~\\
+\item<3-> Combine chlorophyll and salinity time series\\~\\
+\item<4-> Prep for WRTDS\\~\\
+\item<5-> Create WRTDS model\\~\\
+\item<6-> Assess model performance, plot results
+\end{enumerate}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\item<1-> Import nutrient data, organize
+\end{enumerate}
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# load SWMPr, nutrient data}
+\hlkwd{library}\hlstd{(SWMPr)}
+\hlkwd{load}\hlstd{(}\hlkwc{file} \hlstd{=} \hlstr{'data/noczbnut.RData'}\hlstd{)}
+
+\hlcom{# rename, qaqc clean up, subset}
+\hlstd{nut} \hlkwb{<-} \hlstd{noczbnut}
+\hlstd{nut} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(nut,} \hlkwc{qaqc_keep} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{4}\hlstd{))}
+\hlstd{nut} \hlkwb{<-} \hlkwd{subset}\hlstd{(nut,} \hlkwc{select} \hlstd{=} \hlstr{'chla_n'}\hlstd{)}
+\hlkwd{head}\hlstd{(nut)}
+\end{alltt}
+\begin{verbatim}
+##         datetimestamp chla_n
+## 1 2002-04-23 15:35:00   2.12
+## 2 2002-05-24 09:20:00   1.60
+## 3 2002-06-24 10:35:00   3.47
+## 4 2002-07-24 09:40:00   4.43
+## 5 2002-08-26 11:31:00   4.65
+## 6 2002-09-24 10:40:00   5.95
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item<1-> Import wq data, organize
+\end{enumerate}
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# load wq data}
+\hlkwd{load}\hlstd{(}\hlkwc{file} \hlstd{=} \hlstr{'data/noczbwq.RData'}\hlstd{)}
+
+\hlcom{# rename, qaqc clean up, subset}
+\hlstd{wq} \hlkwb{<-} \hlstd{noczbwq}
+\hlstd{wq} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(wq,} \hlkwc{qaqc_keep} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{4}\hlstd{))}
+\hlstd{wq} \hlkwb{<-} \hlkwd{subset}\hlstd{(wq,} \hlkwc{select} \hlstd{=} \hlstr{'sal'}\hlstd{)}
+\hlkwd{head}\hlstd{(wq)}
+\end{alltt}
+\begin{verbatim}
+##         datetimestamp  sal
+## 1 2002-03-01 12:30:00 26.8
+## 2 2002-03-01 13:00:00 26.8
+## 3 2002-03-01 13:30:00 26.7
+## 4 2002-03-01 14:00:00 26.7
+## 5 2002-03-01 14:30:00 26.6
+## 6 2002-03-01 15:00:00 26.6
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
 
 
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item<1-> Combine chlorophyll and salinity time series
+\end{enumerate}
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# combine at weekly time step}
+\hlstd{tomod} \hlkwb{<-} \hlkwd{comb}\hlstd{(nut, wq,} \hlkwc{timestep} \hlstd{=} \hlstr{'weeks'}\hlstd{)}
+
+\hlcom{# plot both}
+\hlkwd{overplot}\hlstd{(tomod,} \hlkwc{type} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'p'}\hlstd{,} \hlstr{'l'}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\includegraphics[width = \textwidth, clip=true, trim=0cm 0cm 0cm 1cm]{imgs/chlasal-1.pdf}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item<1-> Prep for WRTDS - requires a tidalmean object with four columns (date, response, salinity/flow, detection limit)
+\end{enumerate}
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(WRTDStidal)}
+
+\hlcom{# add arbitrary limit column, datetimestamp as date}
+\hlstd{tomod}\hlopt{$}\hlstd{lim} \hlkwb{<-} \hlopt{-}\hlnum{1e6}
+\hlstd{tomod}\hlopt{$}\hlstd{datetimestamp} \hlkwb{<-} \hlkwd{as.Date}\hlstd{(tomod}\hlopt{$}\hlstd{datetimestamp)}
+
+\hlcom{# create tidalmean object, note if response is in log or not}
+\hlstd{tomod} \hlkwb{<-} \hlkwd{tidalmean}\hlstd{(tomod,} \hlkwc{reslog} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\hlkwd{head}\hlstd{(tomod)}
+\end{alltt}
+\begin{verbatim}
+##         date res       flo    lim not_cens   day_num month year dec_time
+## 1 2002-02-28  NA 0.7123746 -1e+06       NA 0.1643836     2 2002 2002.164
+## 2 2002-03-07  NA 0.6856187 -1e+06       NA 0.1835616     3 2002 2002.184
+## 3 2002-03-14  NA 0.3712375 -1e+06       NA 0.2027397     3 2002 2002.203
+## 4 2002-03-21  NA 0.5685619 -1e+06       NA 0.2219178     3 2002 2002.222
+## 5 2002-03-28  NA 0.5886288 -1e+06       NA 0.2410959     3 2002 2002.241
+## 6 2002-04-04  NA 0.6220736 -1e+06       NA 0.2602740     4 2002 2002.260
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item<1-> Create WRTDS model
+\end{enumerate}
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# use modfit function}
+\hlstd{mod} \hlkwb{<-} \hlkwd{modfit}\hlstd{(tomod)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Estimating interpolation grid for mean response, % complete...
+## 
+## 5 	10 	15 	20 	25 	30 	35 	40 	45 	50 	55 	60 	65 	70 	75 	80 	85 	90 	95 	100 	
+## 
+## Estimating predictions... 
+## 
+## 
+## Normalizing predictions...
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\onslide<3->
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item<1-> Assess performance
+\end{enumerate}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{wrtdsperf}\hlstd{(mod)}
+\end{alltt}
+\begin{verbatim}
+##        rmse      nmse
+## 1 0.6417556 0.3476415
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Plot results: fitplot shows observed, predicted, averaged by water years
+\end{enumerate}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{fitplot}\hlstd{(mod)}
+\end{alltt}
+\end{kframe}
+
+{\centering \includegraphics[width=\maxwidth]{imgs/wrtdsplo1-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Plot results: prdnrmplot shows predicted, flow-normalized predictions, averaged by year
+\end{enumerate}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{prdnrmplot}\hlstd{(mod)}
+\end{alltt}
+\end{kframe}
+
+{\centering \includegraphics[width=\maxwidth]{imgs/wrtdsplo2-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t, fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using WRTDS with NERRS data}{}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Plot results: gridplot shows how the flow, chlorophyll response has changed by season, year
+\end{enumerate}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{gridplot}\hlstd{(mod,} \hlkwc{logspace} \hlstd{= F,} \hlkwc{month} \hlstd{=} \hlstr{'all'}\hlstd{,} \hlkwc{floscl} \hlstd{= F)}
+\end{alltt}
+\end{kframe}
+
+{\centering \includegraphics[width=\maxwidth]{imgs/wrtdsplo3-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+\section{Summary}
+
+%%%%%%
+\begin{frame}{WRTDS summary}{}
+\begin{itemize}
+\item<1-> WRTDS has value for describing decadal trends in the unique context of time, discharge (salinity), and season \\~\\
+\item<2-> Flow-normalized results provide a more `genuine' description of the trend \\~\\
+\item<3-> Just have a general idea of the theory, WRTDStidal package does the heavy lifting for you \\~\\
+\item<4-> Lots shown here, the code can be used step-by-step with other stations \\~\\
+\end{itemize}
+\onslide<5->
+Checkout the references and the website for more info: \href{https://github.com/fawda123/WRTDStidal}{https://github.com/fawda123/WRTDStidal}
 \end{frame}
 
 %%%%%%
