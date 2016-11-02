@@ -1,0 +1,27 @@
+\frametitle{\includegraphics [width = 0.05\textwidth ]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use functions in the SWMPr package \\~\\
+Option 1, from the R Console prompt:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'SWMPr'}\hlstd{)}
+\hlkwd{library}\hlstd{(SWMPr)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# change as needed}
+\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/SWMPr-v2.1.7.9000.tar.gz'}
+
+\hlcom{# install, load}
+\hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
+\hlkwd{library}\hlstd{(SWMPr)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}

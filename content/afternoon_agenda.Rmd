@@ -42,23 +42,27 @@ Topic 1: Weighted regression in tidal waters
 * Presentation on the theory and rationale of WRTDS for tidal waters
 * Apply WRTDS to NERRS sites, assess model fit, create visualization of results
     
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.pdf" target = "_parent">presentation</a>, script
+
 ### 3:00pm BREAK
 
-### 3:30pm Time Series Topics 2, 3
+### 3:30pm Time Series Topic 2
 
 Topic 2: Time series decomposition
 
 * Presentation on the theory and rationale of time series decomposition
 * Decompose NERRS time series using methods in SWMPr and other R packages
     
-Materials: link to script
+Materials: presentation, script
+
+### 4:15pm Time Series Topic 3
 
 Topic 3: Seasonal Kendall tests
 
 * Presentation on the theory and rationale of Seasonal Kendall Tests
 * Evaluate the significance and direction of a trend using NERRS data
     
-Materials: link to script
+Materials: presentation, script
 
 ### 5:00pm ADJOURN
 

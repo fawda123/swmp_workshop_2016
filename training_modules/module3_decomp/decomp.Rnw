@@ -1,0 +1,353 @@
+\documentclass[xcolor=dvipsnames,serif]{beamer}
+\usetheme{Boadilla}
+\usecolortheme[named=CornflowerBlue]{structure}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage[final]{animate}
+\usepackage{lmodern}
+\usetikzlibrary{shadows,arrows,positioning}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=links,urlcolor=links}
+\usepackage{pgfpages}
+
+\tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+% change font of frame titles and title slide
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries} 
+
+% enumerate style
+\setbeamertemplate{enumerate items}[circle]
+
+% my macros
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+\newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
+
+\begin{document}
+
+\title[TS decomposition]{Time series topic 2: Decomposition}
+
+\author[M. Beck]{Marcus W. Beck\inst{1}}
+
+\date{}
+
+\institute[]{\inst{1} USEPA NHEERL Gulf Ecology Division\\ Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}}
+
+% knitr setup
+<<setup, include = F, cache = F>>=
+library(knitr)
+
+# set global chunk options
+opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize', fig.path = 'imgs/')
+options(replace.assign=TRUE,width=80)
+@
+
+% dependents
+<<swmpr, eval = T, echo = F, cache = F, message = F>>=
+library(SWMPr)
+library(tidyverse)
+library(WRTDStidal)
+@
+
+% get online bib file
+<<echo = FALSE, cache = FALSE>>=
+refs <- httr::GET('https://raw.githubusercontent.com/fawda123/refs/master/refs.bib')
+refs <- rawToChar(refs$content)
+writeLines(refs, con = file('refs.bib'))
+@
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\titlepage
+\end{frame}
+
+\section{Overview}
+
+%%%%%%
+\begin{frame}{Objectives for the session (3:30-4:15)}
+\begin{itemize}
+\item What and why time series decomposition \\~\\
+\item Functions in SWMPr, other resources \\~\\
+\item Application to NERRS data \\~\\
+\begin{itemize}
+\item Data prep \\~\\
+\item Execution
+\item Interpretation 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Interactive portion}
+\onslide<+->
+Follow along as we go:\\~\\
+\begin{itemize}
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2016 workshop tab \\~\\
+\end{itemize}
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}} 
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use functions in the SWMPr package \\~\\
+Option 1, from the R Console prompt:
+<<eval = FALSE>>=
+install.packages('SWMPr')
+library(SWMPr)
+@
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+<<eval = F>>=
+# change as needed
+path_to_file <- 'C:/Users/mbeck/Desktop/SWMPr-v2.1.7.9000.tar.gz'
+
+# install, load
+install.packages(path_to_file, repos = NULL, type="source")
+library(SWMPr)
+@
+\end{frame}
+
+<<echo = F, cache = TRUE, eval = T, message = F, results = 'hide'>>=
+data(wrtdsobs)
+
+pal <- function(x) RColorBrewer::brewer.pal(x, 'GnBu')
+num_col <- 5
+
+# model subset and plot subsets
+mod <- wrtdsobs
+ylab <-  expression(paste("DIN (mg ", L^-1, ")"))
+xlims <- as.Date(c('1976-01-01', '2013-12-31'))
+ylims <- c(0, 6)
+
+annuals <- prdnrmplot(mod, annuals = TRUE, plot = F) %>%
+  .$nrms %>% 
+  filter(taus == 0.5)
+seasnls <- prdnrmplot(mod, annuals = FALSE, plot = F) %>%
+  .$nrms %>% 
+  filter(taus == 0.5)
+residus <- select(mod, date, res, fit0.5) %>% 
+  mutate(resfit = exp(res) - exp(fit0.5)) %>% 
+  na.omit()
+
+# default theme
+mytheme <- theme_minimal() + 
+  theme(
+    plot.background = element_rect(fill='transparent', 
+      colour = NA),
+    panel.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.background = element_rect(fill='transparent', 
+      colour = NA),
+    legend.key = element_rect(fill = 'transparent', 
+      colour = NA),
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm"), 
+    panel.grid.major = element_line(colour = pal(num_col)[3]),
+    panel.grid.minor = element_line(colour = pal(num_col)[2])
+    )   
+
+# plots
+p1 <- ggplot(na.omit(mod), aes(x = date, y = exp(res))) + 
+  geom_line() +
+  mytheme +
+  scale_y_continuous(ylab, limits = c(0, 4)) + 
+  scale_x_date('Time', limits = xlims)
+
+p2 <- ggplot(annuals, aes(x = date, y = exp(nrms_value))) + 
+  geom_line() + 
+  mytheme +
+  scale_y_continuous(ylab, limits = c(0, 4)) + 
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  scale_x_date('Time', limits = xlims) + 
+  ggtitle('Annual')
+
+p3 <- ggplot(seasnls, aes(x = date, y = exp(nrms_value))) + 
+  geom_line() + 
+  mytheme +
+  scale_y_continuous(ylab) + 
+  scale_x_date('Time', limits = xlims) + 
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  ggtitle('Seasonal')
+
+p4 <- ggplot(residus, aes(x = date, y = resfit)) + 
+  geom_point() + 
+  geom_hline(aes(yintercept = 0)) + 
+  mytheme +
+  scale_y_continuous(ylab) + 
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  scale_x_date('Time', limits = xlims) + 
+  ggtitle('Residual')
+
+p5 <- dynaplot(mod, mo = 1, logspace = F, years = c(1976, 2000, 2013), col_vec = 'black') + 
+  mytheme +
+  theme(
+    legend.position = 'none', 
+    strip.text.x = element_blank(),
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8)
+    ) + 
+  scale_y_continuous(ylab) + 
+  scale_x_continuous('Flow') + 
+  ggtitle('Flow effects')
+
+pdf('imgs/ts_ex.pdf', height = 2, width = 12, family = 'serif')
+p1
+dev.off()
+
+ht <- 1.75
+wd <- 4.5
+
+pdf('imgs/schematic2.pdf', height = ht, width = wd, family = 'serif')
+p2
+dev.off()
+pdf('imgs/schematic3.pdf', height = ht, width = wd, family = 'serif')
+p3
+dev.off()
+pdf('imgs/schematic4.pdf', height = ht, width = wd, family = 'serif')
+p4
+dev.off()
+pdf('imgs/schematic5.pdf', height = ht, width = wd, family = 'serif')
+p5
+dev.off()
+@
+
+%%%%%%
+\begin{frame}[t]{Theory and background}{}
+{\bf \centerline{Observed data represents effects of many processes}}
+\vspace{0.15in}
+\centerline{\includegraphics[width = \textwidth]{imgs/ts_ex.pdf}}
+\vspace{0.15in}
+\begin{columns}[t]
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Climate}}}\\
+precipitation\\
+temperature\\
+wind events\\
+ENSO effects
+\end{column}
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Local}}}\\
+light/turbidity\\
+residence time\\
+invasive species\\
+trophic effects
+\end{column}
+\begin{column}{0.3\textwidth}
+{\bf \underline{\Bigtxt{Regional/historical}}}\\
+watershed inputs\\
+point sources\\
+management actions
+flow changes
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Theory and background}
+\onslide<+->
+{\bf \centerline{Observed data represents effects of many processes}}
+\vspace{0.15in}
+\centerline{\includegraphics[width = \textwidth]{imgs/ts_ex.pdf}}
+\centerline{Models should describe components to evaluate effects}
+\vspace{-0.1in}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\onslide<+->{
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic2.pdf}}
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic3.pdf}}
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+\onslide<+->{
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic4.pdf}}
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/schematic5.pdf}}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Theory and background}
+\begin{itemize}
+\item<1-> Time series decomposition is a very general topic - WRTDS is a form of decomposition \\~\\
+\item<2-> There are more generic and simpler approaches \\~\\
+\item<3-> Objective is to isolate (or remove) a \Bigtxt{known} component in a time series \\~\\
+\item<4-> But be warned... just because you can doesn't mean you should
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Theory and background}
+Two very general decomposition methods are provided in SWMPr: \texttt{decomp()}, and \texttt{decomp_cj}) \\~\\
+These are not new methods, they just make it easy to decompose NERRS data
+\end{frame}
+
+%%%%%%
+\begin{frame}{Theory and background}
+
+\end{frame}
+
+\section{Application}
+
+\section{Summary}
+
+%%%%%%
+\begin{frame}{Time series decomposition summary}{}
+Things to ask before decomposition: \\~\\
+\begin{itemize}
+\item What is the time step? Is it regular? Does it need be standardized?
+\item How do I deal with missing data?
+\item Is there any expected cyclical variation? If so, what is the period (e.g., seasonal, daily)?
+\item Is stationarity a reasonable expectation? 
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\vspace{0.5in}
+\centerline{Up next... Time Series Topic 3: Seasonal Kendall}
+\vspace{0.5in}
+\Large
+\centerline{\Bigtxt{Questions??}}
+\end{frame}
+
+%%%%%%
+\section{References}
+\begin{frame}[t]{\textbf{References}}
+\tiny
+\setbeamertemplate{bibliography item}{}
+\bibliographystyle{apalike_mine}
+\bibliography{refs}
+\end{frame}
+\end{document}
