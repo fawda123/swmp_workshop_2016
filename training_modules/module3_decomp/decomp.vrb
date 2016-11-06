@@ -1,27 +1,21 @@
-\frametitle{\includegraphics [width = 0.05\textwidth ]{imgs/swmprat.png} Is everything installed?}
-\onslide<1->
-We will use functions in the SWMPr package \\~\\
-Option 1, from the R Console prompt:
+\frametitle{\includegraphics [width = 0.05\textwidth ]{imgs/swmprat.png} Summary}\framesubtitle {}
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{install.packages}\hlstd{(}\hlstr{'SWMPr'}\hlstd{)}
-\hlkwd{library}\hlstd{(SWMPr)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-\onslide<2->
-\vspace{0.1in}
-Option 2, install the source file from the flash drive:
-\begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{# change as needed}
-\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/SWMPr-v2.1.7.9000.tar.gz'}
+\hlcom{# use na.approx to interpolate missing data}
+\hlstd{dat} \hlkwb{<-} \hlkwd{subset}\hlstd{(apadbwq,} \hlkwc{subset} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'2013-06-01 00:00'}\hlstd{,} \hlstr{'2013-07-31 00:00'}\hlstd{))}
+\hlstd{dat} \hlkwb{<-} \hlkwd{na.approx}\hlstd{(dat,} \hlkwc{params} \hlstd{=} \hlstr{'do_mgl'}\hlstd{,} \hlkwc{maxgap} \hlstd{=} \hlnum{10}\hlstd{)}
 
-\hlcom{# install, load}
-\hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
-\hlkwd{library}\hlstd{(SWMPr)}
+\hlcom{# decomposition and plot}
+\hlstd{dat_fl} \hlkwb{<-} \hlkwd{decomp}\hlstd{(dat,} \hlkwc{param} \hlstd{=} \hlstr{'do_mgl'}\hlstd{,} \hlkwc{frequency} \hlstd{=} \hlstr{'daily'}\hlstd{)}
+\hlkwd{plot}\hlstd{(dat_fl)}
 \end{alltt}
 \end{kframe}
+
+{\centering \includegraphics[width=0.7\textwidth]{imgs/dailyfl-1}
+
+}
+
+
+
 \end{knitrout}

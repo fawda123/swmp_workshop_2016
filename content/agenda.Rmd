@@ -51,5 +51,5 @@ We strongly encourage you to review the following to better prepare for the work
 
 * SWMPr: <a href="https://journal.r-project.org/archive/2016-1/beck.pdf" target = "_parent">manuscript</a>
 
-* Weighted regression in tidal waters with WRTDStidal: <a href="http://swmprats.net/images/Beck-and-Hagy-2015-weighted-regression-for-tidal-waters.pdf" target = "_parent">manuscript</a>, <a href="https://github.com/fawda123/WRTDStidal" target = "_parent">website</a>
+* Weighted regression in tidal waters with WRTDStidal (afternoon only): <a href="http://swmprats.net/images/Beck-and-Hagy-2015-weighted-regression-for-tidal-waters.pdf" target = "_parent">manuscript</a>, <a href="https://github.com/fawda123/WRTDStidal" target = "_parent">website</a>
 

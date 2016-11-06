@@ -51,9 +51,9 @@ Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modul
 Topic 2: Time series decomposition
 
 * Presentation on the theory and rationale of time series decomposition
-* Decompose NERRS time series using methods in SWMPr and other R packages
+* Decompose NERRS time series using methods in SWMPr
     
-Materials: presentation, script
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module3_decomp/decomp.pdf" target = "_parent">presentation</a>, script
 
 ### 4:15pm Time Series Topic 3
 

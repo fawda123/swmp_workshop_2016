@@ -43,7 +43,7 @@ library(knitr)
 
 # set global chunk options
 opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize', fig.path = 'imgs/')
-options(replace.assign=TRUE,width=80)
+options(replace.assign=TRUE,width=70)
 @
 
 % dependents
@@ -75,12 +75,12 @@ writeLines(refs, con = file('refs.bib'))
 %%%%%%
 \begin{frame}{Objectives for the session (3:30-4:15)}
 \begin{itemize}
-\item What and why time series decomposition \\~\\
-\item Functions in SWMPr, other resources \\~\\
+\item What is and why do we use time series decomposition \\~\\
+\item Functions in SWMPr \\~\\
 \item Application to NERRS data \\~\\
 \begin{itemize}
 \item Data prep \\~\\
-\item Execution
+\item Execution \\~\\
 \item Interpretation 
 \end{itemize}
 \end{itemize}
@@ -297,34 +297,211 @@ flow changes
 \begin{itemize}
 \item<1-> Time series decomposition is a very general topic - WRTDS is a form of decomposition \\~\\
 \item<2-> There are more generic and simpler approaches \\~\\
-\item<3-> Objective is to isolate (or remove) a \Bigtxt{known} component in a time series \\~\\
-\item<4-> But be warned... just because you can doesn't mean you should
+\item<3-> Objective is to decompose a time series into individual components, isolate or otherwise remove components of interests \\~\\
+\item<4-> The individual components are sometimes additive or multiplicative components of the complete time series \\~\\
+\item<5-> But be warned... just because you can doesn't mean you should
 \end{itemize}
 \end{frame}
 
 %%%%%%
-\begin{frame}{Theory and background}
-Two very general decomposition methods are provided in SWMPr: \texttt{decomp()}, and \texttt{decomp_cj}) \\~\\
-These are not new methods, they just make it easy to decompose NERRS data
+\begin{frame}[t]{Theory and background}
+\onslide<1->
+Two very general decomposition methods are provided in SWMPr: \texttt{decomp()} and \texttt{decomp_cj} \\~\\
+These are not new methods, they just make it easy to decompose NERRS data - work with swmpr objects \\~\\
+\begin{columns}[t]
+\begin{column}{\textwidth}
+\onslide<2->
+\underline{\texttt{decomp()}} \\~\\
+\begin{itemize}
+\item<2-> Almost identical to the \texttt{decompose} function
+\item<3-> Works well for time series with daily or seasonal cycles
+\item<4-> Separates components as trend, cyclical variation (e.g., annaul, daily), and random
+\item<5-> Additive or multiplicative decomposition
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 %%%%%%
-\begin{frame}{Theory and background}
+\begin{frame}[t]{Theory and background}
+\onslide<1->
+Two very general decomposition methods are provided in SWMPr: \texttt{decomp()} and \texttt{decomp_cj} \\~\\
+These are not new methods, they just make it easy to decompose NERRS data - work with swmpr objects \\~\\
+\begin{columns}[t]
+\begin{column}{\textwidth}
+\underline{\texttt{decomp()}} \\~\\
+\begin{enumerate}
+\item Gets trend by moving average, removes it from the time series.
+\item<2-> Gets seasonal variation by averaging across time periods
+\item<3-> Gets error as the remainder from the trend and seasonal components
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
 
+%%%%%%
+\begin{frame}[t]{Theory and background}
+\onslide<1->
+Two very general decomposition methods are provided in SWMPr: \texttt{decomp()} and \texttt{decomp_cj} \\~\\
+These are not new methods, they just make it easy to decompose NERRS data - work with swmpr objects  \\~\\
+\begin{columns}[t]
+\begin{column}{\textwidth}
+\underline{\texttt{decomp_cj()}}\\~\\
+\begin{itemize}
+\item Based on a deprecated method in the wq package, described in \cite{Cloern10}
+\item<2-> Works only for time series with seasonal cycles
+\item<3-> Separates components as grandmean, annual, seasonal, and events
+\item<4-> Additive or multiplicative decomposition
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Theory and background}
+\onslide<1->
+Two very general decomposition methods are provided in SWMPr: \texttt{decomp()} and \texttt{decomp_cj} \\~\\
+These are not new methods, they just make it easy to decompose NERRS data - work with swmpr objects  \\~\\
+\begin{columns}[t]
+\begin{column}{\textwidth}
+\underline{\texttt{decomp_cj()}}\\~\\
+\begin{enumerate}
+\item Takes grandmean, removes it from time series
+\item<2-> Annual trends as averages within years, removes from time series
+\item<3-> Seasonal trend as averages between periods, removes from time series
+\item<4-> Events as remainder
+\end{enumerate}
+\end{column}
+\end{columns}
 \end{frame}
 
 \section{Application}
 
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+Load some water quality data from Apalachicola Bay, Dry Bar station \\~\\
+Let's look at DO variation over one month
+<<dailyobs, message = F, echo = c(-3), fig.height = 2.5, fig.width = 8, family = 'serif'>>=
+# load SWMPr
+library(SWMPr)
+par(mar = c(4, 4, 0.5, 0.5))
+
+# subset for daily decomposition
+dat <- subset(apadbwq, subset = c('2013-07-01 00:00', '2013-07-31 00:00'), 
+  select = 'do_mgl')
+plot(dat)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+<<dailydcadd, message = F, eval = T, fig.height = 6, fig.width = 8, out.width = '0.7\\textwidth'>>=
+dat_add <- decomp(dat, param = 'do_mgl', frequency = 'daily', type = 'additive')
+plot(dat_add)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+What's in the decomposed object?  
+<<>>=
+str(dat_add)
+str(dat_add$trend)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+What does additive mean?
+<<dailydc_rcadd, message = F, eval = T, fig.height = 4, fig.width = 4, out.width = '0.5\\textwidth', echo = -2>>=
+add <- with(dat_add, seasonal + trend + random)
+par(mar = c(4, 4, 0.5, 0.5))
+plot(add, dat$do_mgl)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+Let's try a multiplicative decomposition
+<<dailydcmul, message = F, eval = T, fig.height = 6, fig.width = 8, out.width = '0.7\\textwidth'>>=
+dat_mul <- decomp(dat, param = 'do_mgl', frequency = 'daily', 
+  type = 'multiplicative')
+plot(dat_mul)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+What does multiplicative mean?
+<<dailydc_rcmul, message = F, eval = T, fig.height = 4, fig.width = 4, out.width = '0.5\\textwidth', echo = -2>>=
+mul <- with(dat_mul, seasonal * trend * random)
+par(mar = c(4, 4, 0.5, 0.5))
+plot(mul, dat$do_mgl)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp\_cj} with NERRS data}
+Use discrete, monthly data with \texttt{decomp\_cj}: Apalachicola Bay, Cat Point nutrient station
+<<monthlydc, message = F, eval = T, fig.height = 6, fig.width = 6, out.width = '0.5\\textwidth'>>=
+apacpnut <- qaqc(apacpnut, qaqc_keep = c(0, 4))
+decomp_cj(apacpnut, param = 'chla_n', type = 'add')
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp\_cj} with NERRS data}
+Note that the default behavior for \texttt{decomp\_cj} is a plot, use \texttt{vals\_out = TRUE} for values
+<<message = F, eval = T>>=
+add <- decomp_cj(apacpnut, param = 'chla_n', type = 'add', vals_out = TRUE)
+head(add)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp\_cj} with NERRS data}
+A word of caution, \texttt{decomp\_cj} uses \texttt{setstep} before decomposing
+<<message = F, eval = T>>=
+head(apacpnut)
+head(add)
+@
+\end{frame}
+
 \section{Summary}
 
 %%%%%%
-\begin{frame}{Time series decomposition summary}{}
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Summary}{}
+A word of caution, \texttt{decomp} does not work with missing data
+<<message = F, eval = T>>=
+dat <- subset(apadbwq, subset = c('2013-06-01 00:00', '2013-07-31 00:00'))
+
+# this returns an error
+test <- decomp(dat, param = 'do_mgl', frequency = 'daily')
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Summary}{}
+<<dailyfl, message = F, eval = T, fig.height = 5, fig.width = 8, out.width = '0.7\\textwidth'>>=
+# use na.approx to interpolate missing data
+dat <- subset(apadbwq, subset = c('2013-06-01 00:00', '2013-07-31 00:00'))
+dat <- na.approx(dat, params = 'do_mgl', maxgap = 10)
+
+# decomposition and plot
+dat_fl <- decomp(dat, param = 'do_mgl', frequency = 'daily')
+plot(dat_fl)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}{Summary}{}
+\onslide<1->
 Things to ask before decomposition: \\~\\
 \begin{itemize}
-\item What is the time step? Is it regular? Does it need be standardized?
-\item How do I deal with missing data?
-\item Is there any expected cyclical variation? If so, what is the period (e.g., seasonal, daily)?
-\item Is stationarity a reasonable expectation? 
+\item<1-> What is the time step? Is it regular? Does it need be standardized?
+\item<2-> How do I deal with missing data?
+\item<3-> Is there any expected cyclical variation? If so, what is the period (e.g., seasonal, daily)?
+\item<4-> Is stationarity a reasonable expectation of the cyclical variation (yes = additive, no = multiplicative)?
 \end{itemize}
 \end{frame}
 

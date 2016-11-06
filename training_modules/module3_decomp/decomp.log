@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  2 NOV 2016 16:14
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  6 NOV 2016 17:33
 entering extended mode
 **decomp.tex
 (M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.tex
@@ -1721,40 +1721,251 @@ Package pdftex.def Info: imgs/schematic5.pdf used on input line 223.
 
 ] [17
 
+] [18
+
+] [19
+
+] [20
+
+] [21
+
+] [22
+
+] [23
+
+] [24
+
+]
+[25
+
+] [26
+
+] [27
+
+] [28
+
+] [29
+
+] [30
+
+] [31
+
+]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+<imgs/dailyobs-1.pdf, id=929, 578.16pt x 180.675pt>
+File: imgs/dailyobs-1.pdf Graphic file (type pdf)
+ <use imgs/dailyobs-1.pdf>
+Package pdftex.def Info: imgs/dailyobs-1.pdf used on input line 17.
+(pdftex.def)             Requested size: 342.2953pt x 106.96674pt.
+)
+File: imgs/swmprat.png Graphic file (type png)
+
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 334.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 334.
+ [32
+
+ <M:/docs/swmp_workshop_2016/training_modules/module3_decomp/imgs/dailyobs-1.pd
+f>]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+<imgs/dailydcadd-1.pdf, id=963, 578.16pt x 433.62pt>
+File: imgs/dailydcadd-1.pdf Graphic file (type pdf)
+
+<use imgs/dailydcadd-1.pdf>
+Package pdftex.def Info: imgs/dailydcadd-1.pdf used on input line 10.
+(pdftex.def)             Requested size: 239.60567pt x 179.70413pt.
+)
+File: imgs/swmprat.png Graphic file (type png)
+ <use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 353.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [33
+
+ <M:/docs/swmp_workshop_2016/training_modules/module3_decomp/imgs/dailydcadd-1.
+pdf>]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+Overfull \hbox (48.6927pt too wide) in paragraph at lines 10--10
+[]\OT1/lmtt/m/n/8 ##  $ x       : Time-Series [1:2881] from 1 to 31: 6.2 6.3 6.
+3 6.2 6 5.9 5.7 5.8 5.7 5.7 ...[] 
+ []
+
+
+Overfull \hbox (10.4487pt too wide) in paragraph at lines 11--11
+[]\OT1/lmtt/m/n/8 ##  $ seasonal: Time-Series [1:2881] from 1 to 31: 0.165 0.12
+ 0.178 0.239 0.163 ...[] 
+ []
+
+
+Overfull \hbox (14.7047pt too wide) in paragraph at lines 12--12
+[]\OT1/lmtt/m/n/8 ##  $ trend   : Time-Series [1:2881] from 1 to 31: NA NA NA N
+A NA NA NA NA NA NA ...[] 
+ []
+
+
+Overfull \hbox (14.7047pt too wide) in paragraph at lines 13--13
+[]\OT1/lmtt/m/n/8 ##  $ random  : Time-Series [1:2881] from 1 to 31: NA NA NA N
+A NA NA NA NA NA NA ...[] 
+ []
+
+)
+File: imgs/swmprat.png Graphic file (type png)
+ <use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 381.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [34
+
+]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+<imgs/dailydc_rcadd-1.pdf, id=1022, 289.08pt x 289.08pt>
+File: imgs/dailydc_rcadd-1.pdf Graphic file (type pdf)
+
+<use imgs/dailydc_rcadd-1.pdf>
+Package pdftex.def Info: imgs/dailydc_rcadd-1.pdf used on input line 11.
+(pdftex.def)             Requested size: 171.14764pt x 171.14679pt.
+)
+File: imgs/swmprat.png Graphic file (type png)
+ <use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 401.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [35
+
+ <M:/docs/swmp_workshop_2016/training_modules/module3_decomp/imgs/dailydc_rcadd
+-1.pdf>]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+<imgs/dailydcmul-1.pdf, id=1054, 578.16pt x 433.62pt>
+File: imgs/dailydcmul-1.pdf Graphic file (type pdf)
+
+<use imgs/dailydcmul-1.pdf>
+Package pdftex.def Info: imgs/dailydcmul-1.pdf used on input line 12.
+(pdftex.def)             Requested size: 239.60567pt x 179.70413pt.
+)
+File: imgs/swmprat.png Graphic file (type png)
+ <use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 422.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [36
+
+ <M:/docs/swmp_workshop_2016/training_modules/module3_decomp/imgs/dailydcmul-1.
+pdf>]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+<imgs/dailydc_rcmul-1.pdf, id=1087, 289.08pt x 289.08pt>
+File: imgs/dailydc_rcmul-1.pdf Graphic file (type pdf)
+
+<use imgs/dailydc_rcmul-1.pdf>
+Package pdftex.def Info: imgs/dailydc_rcmul-1.pdf used on input line 11.
+(pdftex.def)             Requested size: 171.14764pt x 171.14679pt.
+)
+File: imgs/swmprat.png Graphic file (type png)
+ <use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 442.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [37
+
+ <M:/docs/swmp_workshop_2016/training_modules/module3_decomp/imgs/dailydc_rcmul
+-1.pdf>]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+<imgs/monthlydc-1.pdf, id=1120, 433.62pt x 433.62pt>
+File: imgs/monthlydc-1.pdf Graphic file (type pdf)
+
+<use imgs/monthlydc-1.pdf>
+Package pdftex.def Info: imgs/monthlydc-1.pdf used on input line 11.
+(pdftex.def)             Requested size: 171.14764pt x 171.149pt.
+)
+File: imgs/swmprat.png Graphic file (type png)
+ <use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 462.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [38
+
+ <M:/docs/swmp_workshop_2016/training_modules/module3_decomp/imgs/monthlydc-1.p
+df>]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb)
+File: imgs/swmprat.png Graphic file (type png)
+
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 484.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [39
+
+]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb)
+File: imgs/swmprat.png Graphic file (type png)
+
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 517.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [40
+
+]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb)
+File: imgs/swmprat.png Graphic file (type png)
+
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 536.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [41
+
+]
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.vrb
+<imgs/dailyfl-1.pdf, id=1229, 578.16pt x 361.35pt>
+File: imgs/dailyfl-1.pdf Graphic file (type pdf)
+ <use imgs/dailyfl-1.pdf>
+Package pdftex.def Info: imgs/dailyfl-1.pdf used on input line 15.
+(pdftex.def)             Requested size: 239.60567pt x 149.75345pt.
+)
+File: imgs/swmprat.png Graphic file (type png)
+
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 560.
+(pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
+ [42
+
+ <M:/docs/swmp_workshop_2016/training_modules/module3_decomp/imgs/dailyfl-1.pdf
+>] [43
+
+] [44
+
+] [45
+
+] [46
+
 ]
 File: imgs/workshop2016logo.png Graphic file (type png)
- <use imgs/workshop2016logo.png>
-Package pdftex.def Info: imgs/workshop2016logo.png used on input line 273.
-(pdftex.def)             Requested size: 308.06367pt x 60.08188pt.
 
-[18
+<use imgs/workshop2016logo.png>
+Package pdftex.def Info: imgs/workshop2016logo.png used on input line 586.
+(pdftex.def)             Requested size: 308.06367pt x 60.08188pt.
+ [47
 
 ]
-No file decomp.bbl.
-Package atenddvi Info: Last page = 19.
-[19
+(M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.bbl)
+Package atenddvi Info: Last page = 48.
+
+[48
 
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 283.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 283.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 596.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 596.
  (M:\docs\swmp_workshop_2016\training_modules\module3_decomp\decomp.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 283.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 283.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 596.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 596.
 Package rerunfilecheck Info: File `decomp.out' has not changed.
 (rerunfilecheck)             Checksum: 7CC8430436A68974E75EA63139039F40;180.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 283.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 596.
  ) 
 Here is how much of TeX's memory you used:
- 29249 strings out of 493921
- 582691 string characters out of 3147282
- 620088 words of memory out of 3000000
- 31909 multiletter control sequences out of 15000+200000
- 61790 words of font info for 52 fonts, out of 3000000 for 9000
+ 29453 strings out of 493921
+ 587994 string characters out of 3147282
+ 624135 words of memory out of 3000000
+ 32023 multiletter control sequences out of 15000+200000
+ 62100 words of font info for 53 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,16n,78p,10376b,737s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,16n,78p,10376b,906s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rmtt.enc}{C:/Program Files
 /MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc
 /dvips/lm/lm-ts1.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.
@@ -1767,9 +1978,9 @@ X 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/lm/lmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtti10
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam7.pfb
 >
-Output written on decomp.pdf (19 pages, 1320188 bytes).
+Output written on decomp.pdf (48 pages, 1812926 bytes).
 PDF statistics:
- 660 PDF objects out of 1000 (max. 8388607)
- 43 named destinations out of 1000 (max. 500000)
- 212 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1480 PDF objects out of 1728 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
+ 247 words of extra memory for PDF output out of 10000 (max. 10000000)
 
