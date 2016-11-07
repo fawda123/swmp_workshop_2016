@@ -1,0 +1,216 @@
+\documentclass[xcolor=dvipsnames,serif]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usetheme{Boadilla}
+\usecolortheme[named=CornflowerBlue]{structure}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage[final]{animate}
+\usepackage{lmodern}
+\usetikzlibrary{shadows,arrows,positioning}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=links,urlcolor=links}
+\usepackage{pgfpages}
+
+\tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+% change font of frame titles and title slide
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries} 
+
+% enumerate style
+\setbeamertemplate{enumerate items}[circle]
+
+% my macros
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+\newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\title[Seasonal Kendall]{Time series topic 3: Seasonal Kendall Tests}
+
+\author[M. Beck]{Marcus W. Beck\inst{1}}
+
+\date{}
+
+\institute[]{\inst{1} USEPA NHEERL Gulf Ecology Division\\ Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}}
+
+% knitr setup
+
+
+% dependents
+
+
+% get online bib file
+
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\titlepage
+\end{frame}
+
+\section{Overview}
+
+%%%%%%
+\begin{frame}{Objectives for the session (4:15 - 5:00)}{}
+\begin{itemize}
+\item What is and why would we use a Kendall test \\~\\
+\item What is a why would we use a \textit{Seasonal} Kendall test \\~\\
+\item Application with NERRS data \\~\\
+\begin{itemize}
+\item Data prep \\~\\
+\item Execution \\~\\
+\item Interpretation
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Interactive portion}
+\onslide<+->
+Follow along as we go:\\~\\
+\begin{itemize}
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2016 workshop tab \\~\\
+\end{itemize}
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use functions in the EnvStats package \\~\\
+Option 1, from the R Console prompt:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'EnvStats'}\hlstd{)}
+\hlkwd{library}\hlstd{(EnvStats)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# change as needed}
+\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/EnvStats_2.1.1.tar.gz'}
+
+\hlcom{# install, load}
+\hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
+\hlkwd{library}\hlstd{(SWMPr)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Theory and background}{}
+
+\end{frame}
+
+\section{Application}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+Load some water quality data
+
+\end{frame}
+
+\section{Summary}
+
+%%%%%%
+\begin{frame}{Summary}{}
+\onslide<1->
+Things to ask before Seasonal Kendall \\~\\
+\begin{itemize}
+\item test \\~\\
+\end{itemize}
+What does Seasonal Kendall not tell us
+\end{frame}
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\vspace{0.5in}
+\centerline{Up next... nothing!}
+\vspace{0.5in}
+\Large
+\centerline{\Bigtxt{Questions??}}
+\end{frame}
+
+%%%%%%
+\section{References}
+\begin{frame}[t]{\textbf{References}}
+\tiny
+\setbeamertemplate{bibliography item}{}
+\bibliographystyle{apalike_mine}
+\bibliography{refs}
+\end{frame}
+
+\end{document}

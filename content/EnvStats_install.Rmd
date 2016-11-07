@@ -1,0 +1,30 @@
+---
+output: html_document
+---
+
+## Installing EnvStats
+
+### Option 1
+
+From the R Console prompt, run the following commands to install from CRAN and load. 
+
+```{r eval = FALSE}
+install.packages('EnvStats')
+library(EnvStats)
+```
+
+### Option 2
+
+1) Download the source file: [EnvStats_2.1.1.tar.gz](https://cran.r-project.org/src/contrib/EnvStats_2.1.1.tar.gz)
+
+2) Install the file using the full file path
+
+```{r eval = F}
+# change as needed
+path_to_file <- 'C:/Users/mbeck/Desktop/EnvStats_2.1.1.tar.gz'
+
+# install, load
+install.packages(path_to_file, repos = NULL, type="source")
+library(SWMPr)
+```
+

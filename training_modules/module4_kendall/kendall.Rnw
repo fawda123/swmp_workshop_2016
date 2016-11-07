@@ -1,0 +1,172 @@
+\documentclass[xcolor=dvipsnames,serif]{beamer}
+\usetheme{Boadilla}
+\usecolortheme[named=CornflowerBlue]{structure}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage[final]{animate}
+\usepackage{lmodern}
+\usetikzlibrary{shadows,arrows,positioning}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=links,urlcolor=links}
+\usepackage{pgfpages}
+
+\tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+% change font of frame titles and title slide
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries} 
+
+% enumerate style
+\setbeamertemplate{enumerate items}[circle]
+
+% my macros
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+\newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
+
+\begin{document}
+
+\title[Seasonal Kendall]{Time series topic 3: Seasonal Kendall Tests}
+
+\author[M. Beck]{Marcus W. Beck\inst{1}}
+
+\date{}
+
+\institute[]{\inst{1} USEPA NHEERL Gulf Ecology Division\\ Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}}
+
+% knitr setup
+<<setup, include = F, cache = F>>=
+library(knitr)
+
+# set global chunk options
+opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize', fig.path = 'imgs/')
+options(replace.assign=TRUE,width=70)
+@
+
+% dependents
+<<swmpr, eval = T, echo = F, cache = F, message = F>>=
+library(SWMPr)
+library(tidyverse)
+library(EnvStats)
+@
+
+% get online bib file
+<<echo = FALSE, cache = FALSE>>=
+refs <- httr::GET('https://raw.githubusercontent.com/fawda123/refs/master/refs.bib')
+refs <- rawToChar(refs$content)
+writeLines(refs, con = file('refs.bib'))
+@
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\titlepage
+\end{frame}
+
+\section{Overview}
+
+%%%%%%
+\begin{frame}{Objectives for the session (4:15 - 5:00)}{}
+\begin{itemize}
+\item What is and why would we use a Kendall test \\~\\
+\item What is a why would we use a \textit{Seasonal} Kendall test \\~\\
+\item Application with NERRS data \\~\\
+\begin{itemize}
+\item Data prep \\~\\
+\item Execution \\~\\
+\item Interpretation
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Interactive portion}
+\onslide<+->
+Follow along as we go:\\~\\
+\begin{itemize}
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2016 workshop tab \\~\\
+\end{itemize}
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use functions in the EnvStats package \\~\\
+Option 1, from the R Console prompt:
+<<eval = FALSE>>=
+install.packages('EnvStats')
+library(EnvStats)
+@
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+<<eval = F>>=
+# change as needed
+path_to_file <- 'C:/Users/mbeck/Desktop/EnvStats_2.1.1.tar.gz'
+
+# install, load
+install.packages(path_to_file, repos = NULL, type="source")
+library(SWMPr)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Theory and background}{}
+
+\end{frame}
+
+\section{Application}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
+Load some water quality data
+
+\end{frame}
+
+\section{Summary}
+
+%%%%%%
+\begin{frame}{Summary}{}
+\onslide<1->
+Things to ask before Seasonal Kendall \\~\\
+\begin{itemize}
+\item test \\~\\
+\end{itemize}
+What does Seasonal Kendall not tell us
+\end{frame}
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop2016logo.png}};
+\end{tikzpicture}}
+\vspace{0.5in}
+\centerline{Up next... nothing!}
+\vspace{0.5in}
+\Large
+\centerline{\Bigtxt{Questions??}}
+\end{frame}
+
+%%%%%%
+\section{References}
+\begin{frame}[t]{\textbf{References}}
+\tiny
+\setbeamertemplate{bibliography item}{}
+\bibliographystyle{apalike_mine}
+\bibliography{refs}
+\end{frame}
+
+\end{document}
