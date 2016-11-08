@@ -104,9 +104,7 @@ You will run examples whenever you see this guy: \\~\\
 We will use the WRTDStidal package \\~\\
 Option 1, from the R Console prompt:
 <<eval = FALSE>>=
-install.packages('devtools')
-library(devtools)
-install_github('fawda123/WRTDStidal')
+install.packages('WRTDStidal')
 library(WRTDStidal)
 @
 \onslide<2->
@@ -114,7 +112,7 @@ library(WRTDStidal)
 Option 2, install the source file from the flash drive:
 <<eval = F>>=
 # change as needed
-path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal-1.0.1.9000.tar.gz'
+path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal_1.0.1.tar.gz'
 
 # install, load
 install.packages(path_to_file, repos = NULL, type="source")

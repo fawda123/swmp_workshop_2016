@@ -155,7 +155,7 @@ Option 2, install the source file from the flash drive:
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# change as needed}
-\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/SWMPr-v2.1.7.9000.tar.gz'}
+\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/SWMPr_2.2.0.tar.gz'}
 
 \hlcom{# install, load}
 \hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
@@ -471,13 +471,13 @@ Note that the default behavior for \texttt{decomp\_cj} is a plot, use \texttt{va
 \hlkwd{head}\hlstd{(add)}
 \end{alltt}
 \begin{verbatim}
-##         Time original    grand    annual   seasonal     events
-## 1 2002-01-01       NA 5.929384 -2.760634 -1.9742526         NA
-## 2 2002-02-01       NA 5.929384 -2.760634 -0.4467677         NA
-## 3 2002-03-01       NA 5.929384 -2.760634 -1.6590556         NA
-## 4 2002-04-01      1.6 5.929384 -2.760634 -1.2348774 -0.3338726
-## 5 2002-05-01       NA 5.929384 -2.760634  1.3020742         NA
-## 6 2002-06-01      3.4 5.929384 -2.760634  0.4469690 -0.2157190
+##         Time original annual  seasonal  events
+## 1 2002-01-01       NA  -2.05 -1.550000      NA
+## 2 2002-02-01       NA  -2.05 -0.400000      NA
+## 3 2002-03-01       NA  -2.05 -0.807500      NA
+## 4 2002-04-01      1.6  -2.05 -0.562500 -0.6875
+## 5 2002-05-01       NA  -2.05  1.258333      NA
+## 6 2002-06-01      3.4  -2.05  0.220000  0.3300
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -504,13 +504,13 @@ A word of caution, \texttt{decomp\_cj} uses \texttt{setstep} before decomposing
 \hlkwd{head}\hlstd{(add)}
 \end{alltt}
 \begin{verbatim}
-##         Time original    grand    annual   seasonal     events
-## 1 2002-01-01       NA 5.929384 -2.760634 -1.9742526         NA
-## 2 2002-02-01       NA 5.929384 -2.760634 -0.4467677         NA
-## 3 2002-03-01       NA 5.929384 -2.760634 -1.6590556         NA
-## 4 2002-04-01      1.6 5.929384 -2.760634 -1.2348774 -0.3338726
-## 5 2002-05-01       NA 5.929384 -2.760634  1.3020742         NA
-## 6 2002-06-01      3.4 5.929384 -2.760634  0.4469690 -0.2157190
+##         Time original annual  seasonal  events
+## 1 2002-01-01       NA  -2.05 -1.550000      NA
+## 2 2002-02-01       NA  -2.05 -0.400000      NA
+## 3 2002-03-01       NA  -2.05 -0.807500      NA
+## 4 2002-04-01      1.6  -2.05 -0.562500 -0.6875
+## 5 2002-05-01       NA  -2.05  1.258333      NA
+## 6 2002-06-01      3.4  -2.05  0.220000  0.3300
 \end{verbatim}
 \end{kframe}
 \end{knitrout}

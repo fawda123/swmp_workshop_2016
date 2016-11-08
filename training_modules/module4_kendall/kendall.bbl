@@ -1,0 +1,13 @@
+\begin{thebibliography}{}
+
+\bibitem[Hirsch et~al., 1982]{Hirsch82}
+Hirsch RM, Slack JR, Smith RA. 1982.
+\newblock Techniques of trend analysis for monthly water quality data.
+\newblock Water Resources Research, 18:107--121.
+
+\bibitem[Millard, 2013]{Millard13}
+Millard SP. 2013.
+\newblock EnvStats: An R Package for Environmental Statistics.
+\newblock Springer, New York.
+
+\end{thebibliography}

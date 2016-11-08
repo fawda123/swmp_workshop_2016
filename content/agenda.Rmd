@@ -35,11 +35,11 @@ Attendees must bring a **personal laptop** with the following items installed:
 
 2) Install RStudio v1.0.44 (or later): <a href="http://swmprats.net/workshop-2014/images/documents/R_install_guide.pdf" target="_parent">Instructions</a> (page 5 - 6)
 
-3) Install SWMPr v2.1.7: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/SWMPr_install)
+3) Install SWMPr v2.2.0: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/SWMPr_install)
 
 4) Download training modules
 
-5) Install WRTDStidal v.0.49.9000: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/WRTDStidal_install) (**afternoon session only**)
+5) Install WRTDStidal v1.0.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/WRTDStidal_install) (**afternoon session only**)
 
 6) Install EnvStats v2.1.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/EnvStats_install) (**afternoon session only**)
 

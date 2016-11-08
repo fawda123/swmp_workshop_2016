@@ -123,7 +123,48 @@ library(SWMPr)
 
 %%%%%%
 \begin{frame}[t]{Theory and background}{}
+\onslide<1->
+Use these tests to answer the question: \\~\\
+Is there a \Bigtxt{monotonic trend} and what is the \Bigtxt{significance}? \\~\\
+\onslide<2->
+Both tests:
+\vspace{0.1in}
+\begin{itemize}
+\item Are non-parametric (no distribution assumptions, based on signs) \\~\\
+\item<3-> Work with a user-defined time interval \\~\\
+\item<4-> Provide a p-value indicating the probability due to chance alone \\~\\
+\item<5-> Provide a direction of the trend as $\tau$ (`tau') \\~\\
+\item<6-> Provide a slope as the rate of change
+\end{itemize}
+\end{frame}
 
+%%%%%%
+\begin{frame}{Theory and background}{}
+\onslide<1->
+The \Bigtxt{Kendall test} for time series:
+$$\tau = \sum_{i = 1}^{n - 1}\sum_{j = i + 1}^{n} sign\left[\left(X_j - X_i\right)\left(Y_j - Y_i\right)\right]$$
+\begin{center}
+$\tau$ will vary from -1 to 1 similar to a correlation coefficient, follows an approximate normal-distribution for hypothesis-testing
+\end{center}
+\vfill
+\onslide<2->
+$$\hat{\beta}_1 = Median\left(\frac{Y_j - Y_i}{X_j - X_i}\right), i < j$$
+\begin{center}
+$\hat{\beta}_1$ is the Theil (Sen) non-parametric estimate of slope or the rate of change in the interval
+\end{center}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Theory and background}{}
+\onslide<1->
+The \Bigtxt{Seasonal Kendall test} is exactly the same... \\
+...except separate tests by month across years (January 1981, 1982, ..., February 1981, 1982, ...), results are pooled. \\~\\
+\begin{itemize}
+\item<2-> Overall $\tau$ is the weighted average of the seasonal estimates \\~\\
+\item<3-> Overall $\hat{\beta_1}$ is the median of all two-point slope estimates within each season \\~\\
+\end{itemize}
+\onslide<4->
+More info in help documentation for \texttt{kendallTrendTest}, \texttt{kendallSeasonalTrendTest} in EnvStats, \cite{Hirsch82,Millard13}
 \end{frame}
 
 \section{Application}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  1 NOV 2016 17:42
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  7 NOV 2016 18:22
 entering extended mode
 **wrtds.tex
 (M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.tex
@@ -1593,7 +1593,7 @@ File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 168.
+Package pdftex.def Info: imgs/swmprat.png used on input line 166.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [5
 
@@ -1602,7 +1602,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 168.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 168.
+Package pdftex.def Info: imgs/swmprat.png used on input line 166.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [6
 
@@ -1610,10 +1610,10 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 168.
 File: imgs/ts_ex.pdf Graphic file (type pdf)
 
 <use imgs/ts_ex.pdf>
-Package pdftex.def Info: imgs/ts_ex.pdf used on input line 201.
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 199.
 (pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
 
-Overfull \hbox (2.22552pt too wide) in paragraph at lines 201--201
+Overfull \hbox (2.22552pt too wide) in paragraph at lines 199--199
 []$[]$  
  []
 
@@ -1623,34 +1623,34 @@ Overfull \hbox (2.22552pt too wide) in paragraph at lines 201--201
 File: imgs/ts_ex.pdf Graphic file (type pdf)
 
 <use imgs/ts_ex.pdf>
-Package pdftex.def Info: imgs/ts_ex.pdf used on input line 225.
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 223.
 (pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
  <imgs/schematic2.pdf, id=269, 325.215pt x 126.4725pt>
 File: imgs/schematic2.pdf Graphic file (type pdf)
 
 <use imgs/schematic2.pdf>
-Package pdftex.def Info: imgs/schematic2.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic2.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 
 <imgs/schematic3.pdf, id=270, 325.215pt x 126.4725pt>
 File: imgs/schematic3.pdf Graphic file (type pdf)
 
 <use imgs/schematic3.pdf>
-Package pdftex.def Info: imgs/schematic3.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic3.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 
 <imgs/schematic4.pdf, id=271, 325.215pt x 126.4725pt>
 File: imgs/schematic4.pdf Graphic file (type pdf)
 
 <use imgs/schematic4.pdf>
-Package pdftex.def Info: imgs/schematic4.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic4.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 
 <imgs/schematic5.pdf, id=272, 325.215pt x 126.4725pt>
 File: imgs/schematic5.pdf Graphic file (type pdf)
 
 <use imgs/schematic5.pdf>
-Package pdftex.def Info: imgs/schematic5.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic5.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
  [8
 
@@ -1661,49 +1661,49 @@ df> <M:/docs/swmp_workshop_2016/training_modules/module2_wrtds/imgs/schematic5.
 pdf>]
 File: imgs/ts_ex.pdf Graphic file (type pdf)
  <use imgs/ts_ex.pdf>
-Package pdftex.def Info: imgs/ts_ex.pdf used on input line 225.
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 223.
 (pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
 File: imgs/schematic2.pdf Graphic file (type pdf)
 
 <use imgs/schematic2.pdf>
-Package pdftex.def Info: imgs/schematic2.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic2.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 File: imgs/schematic3.pdf Graphic file (type pdf)
  <use imgs/schematic3.pdf>
-Package pdftex.def Info: imgs/schematic3.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic3.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 File: imgs/schematic4.pdf Graphic file (type pdf)
  <use imgs/schematic4.pdf>
-Package pdftex.def Info: imgs/schematic4.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic4.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 File: imgs/schematic5.pdf Graphic file (type pdf)
 
 <use imgs/schematic5.pdf>
-Package pdftex.def Info: imgs/schematic5.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic5.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
  [9
 
 ]
 File: imgs/ts_ex.pdf Graphic file (type pdf)
  <use imgs/ts_ex.pdf>
-Package pdftex.def Info: imgs/ts_ex.pdf used on input line 225.
+Package pdftex.def Info: imgs/ts_ex.pdf used on input line 223.
 (pdftex.def)             Requested size: 342.2953pt x 57.04965pt.
 File: imgs/schematic2.pdf Graphic file (type pdf)
  <use imgs/schematic2.pdf>
-Package pdftex.def Info: imgs/schematic2.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic2.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 File: imgs/schematic3.pdf Graphic file (type pdf)
 
 <use imgs/schematic3.pdf>
-Package pdftex.def Info: imgs/schematic3.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic3.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 File: imgs/schematic4.pdf Graphic file (type pdf)
  <use imgs/schematic4.pdf>
-Package pdftex.def Info: imgs/schematic4.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic4.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 File: imgs/schematic5.pdf Graphic file (type pdf)
  <use imgs/schematic5.pdf>
-Package pdftex.def Info: imgs/schematic5.pdf used on input line 225.
+Package pdftex.def Info: imgs/schematic5.pdf used on input line 223.
 (pdftex.def)             Requested size: 136.91862pt x 53.24738pt.
 
 [10
@@ -1719,7 +1719,7 @@ Package pdftex.def Info: imgs/schematic5.pdf used on input line 225.
 File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
 
 <use imgs/wrtds_pieces.pdf, page 1>
-Package pdftex.def Info: imgs/wrtds_pieces.pdf, page1 used on input line 259.
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page1 used on input line 257.
 (pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
  [14
 
@@ -1729,7 +1729,7 @@ df>]
 File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
 
 <use imgs/wrtds_pieces.pdf, page 2>
-Package pdftex.def Info: imgs/wrtds_pieces.pdf, page2 used on input line 259.
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page2 used on input line 257.
 (pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
  [15
 
@@ -1739,7 +1739,7 @@ df>]
 File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
 
 <use imgs/wrtds_pieces.pdf, page 3>
-Package pdftex.def Info: imgs/wrtds_pieces.pdf, page3 used on input line 259.
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page3 used on input line 257.
 (pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
  [16
 
@@ -1749,7 +1749,7 @@ df>]
 File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
 
 <use imgs/wrtds_pieces.pdf, page 4>
-Package pdftex.def Info: imgs/wrtds_pieces.pdf, page4 used on input line 259.
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page4 used on input line 257.
 (pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
  [17
 
@@ -1759,7 +1759,7 @@ df>]
 File: imgs/wrtds_pieces.pdf Graphic file (type pdf)
 
 <use imgs/wrtds_pieces.pdf, page 5>
-Package pdftex.def Info: imgs/wrtds_pieces.pdf, page5 used on input line 259.
+Package pdftex.def Info: imgs/wrtds_pieces.pdf, page5 used on input line 257.
 (pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
  [18
 
@@ -2173,7 +2173,7 @@ ing_modules/module2_wrtds/imgs/wrtds_pieces2.pdf> <237> <M:/docs/swmp_workshop_
 <imgs/wrtds_perf.pdf, id=2637, 505.89pt x 180.675pt>
 File: imgs/wrtds_perf.pdf Graphic file (type pdf)
  <use imgs/wrtds_perf.pdf>
-Package pdftex.def Info: imgs/wrtds_perf.pdf used on input line 302.
+Package pdftex.def Info: imgs/wrtds_perf.pdf used on input line 300.
 (pdftex.def)             Requested size: 342.2953pt x 122.25085pt.
 
 [22
@@ -2191,7 +2191,7 @@ Package pdftex.def Info: imgs/wrtds_perf.pdf used on input line 302.
 <imgs/noc_widg1.PNG, id=2776, 953.06062pt x 626.34pt>
 File: imgs/noc_widg1.PNG Graphic file (type png)
  <use imgs/noc_widg1.PNG>
-Package pdftex.def Info: imgs/noc_widg1.PNG used on input line 325.
+Package pdftex.def Info: imgs/noc_widg1.PNG used on input line 323.
 (pdftex.def)             Requested size: 342.2953pt x 224.95657pt.
 
 [27
@@ -2201,7 +2201,7 @@ Package pdftex.def Info: imgs/noc_widg1.PNG used on input line 325.
 File: imgs/noc_widg2.PNG Graphic file (type png)
 
 <use imgs/noc_widg2.PNG>
-Package pdftex.def Info: imgs/noc_widg2.PNG used on input line 325.
+Package pdftex.def Info: imgs/noc_widg2.PNG used on input line 323.
 (pdftex.def)             Requested size: 342.2953pt x 222.18759pt.
  [28
 
@@ -2223,7 +2223,7 @@ Package pdftex.def Info: imgs/noc_widg2.PNG used on input line 325.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 371.
+Package pdftex.def Info: imgs/swmprat.png used on input line 369.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [35
 
@@ -2232,7 +2232,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 371.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 371.
+Package pdftex.def Info: imgs/swmprat.png used on input line 369.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [36
 
@@ -2241,7 +2241,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 371.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 403.
+Package pdftex.def Info: imgs/swmprat.png used on input line 401.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [37
 
@@ -2250,7 +2250,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 403.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 403.
+Package pdftex.def Info: imgs/swmprat.png used on input line 401.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [38
 
@@ -2265,10 +2265,10 @@ Package pdftex.def Info: imgs/chlasal-1.pdf used on input line 18.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 426.
+Package pdftex.def Info: imgs/swmprat.png used on input line 424.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
 
-Overfull \vbox (1.4369pt too high) detected at line 426
+Overfull \vbox (1.4369pt too high) detected at line 424
  []
 
 [39
@@ -2283,10 +2283,10 @@ Package pdftex.def Info: imgs/chlasal-1.pdf used on input line 18.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 426.
+Package pdftex.def Info: imgs/swmprat.png used on input line 424.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
 
-Overfull \vbox (1.4369pt too high) detected at line 426
+Overfull \vbox (1.4369pt too high) detected at line 424
  []
 
 [40
@@ -2295,7 +2295,7 @@ Overfull \vbox (1.4369pt too high) detected at line 426
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 459.
+Package pdftex.def Info: imgs/swmprat.png used on input line 457.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [41
 
@@ -2304,7 +2304,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 459.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 459.
+Package pdftex.def Info: imgs/swmprat.png used on input line 457.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [42
 
@@ -2318,7 +2318,7 @@ Overfull \hbox (1.9467pt too wide) in paragraph at lines 17--17
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 503.
+Package pdftex.def Info: imgs/swmprat.png used on input line 501.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [43
 
@@ -2332,7 +2332,7 @@ Overfull \hbox (1.9467pt too wide) in paragraph at lines 17--17
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 503.
+Package pdftex.def Info: imgs/swmprat.png used on input line 501.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [44
 
@@ -2346,7 +2346,7 @@ Overfull \hbox (1.9467pt too wide) in paragraph at lines 17--17
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 503.
+Package pdftex.def Info: imgs/swmprat.png used on input line 501.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [45
 
@@ -2361,7 +2361,7 @@ Package pdftex.def Info: imgs/wrtdsplo1-1.pdf used on input line 13.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 526.
+Package pdftex.def Info: imgs/swmprat.png used on input line 524.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [46
 
@@ -2377,7 +2377,7 @@ Package pdftex.def Info: imgs/wrtdsplo2-1.pdf used on input line 13.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 548.
+Package pdftex.def Info: imgs/swmprat.png used on input line 546.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [47
 
@@ -2393,7 +2393,7 @@ Package pdftex.def Info: imgs/wrtdsplo3-1.pdf used on input line 13.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 570.
+Package pdftex.def Info: imgs/swmprat.png used on input line 568.
 (pdftex.def)             Requested size: 17.1158pt x 13.64104pt.
  [48
 
@@ -2412,7 +2412,7 @@ f>] [49
 ]
 File: imgs/workshop2016logo.png Graphic file (type png)
  <use imgs/workshop2016logo.png>
-Package pdftex.def Info: imgs/workshop2016logo.png used on input line 598.
+Package pdftex.def Info: imgs/workshop2016logo.png used on input line 596.
 (pdftex.def)             Requested size: 308.06367pt x 60.08188pt.
  [54
 
@@ -2425,15 +2425,15 @@ Package atenddvi Info: Last page = 55.
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 608.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 608.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 606.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 606.
 
 (M:\docs\swmp_workshop_2016\training_modules\module2_wrtds\wrtds.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 608.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 608.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 606.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 606.
 Package rerunfilecheck Info: File `wrtds.out' has not changed.
 (rerunfilecheck)             Checksum: 7CC8430436A68974E75EA63139039F40;180.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 608.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 606.
  ) 
 Here is how much of TeX's memory you used:
  31462 strings out of 493921
@@ -2456,7 +2456,7 @@ TeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on wrtds.pdf (55 pages, 7772183 bytes).
+Output written on wrtds.pdf (55 pages, 7771789 bytes).
 PDF statistics:
  3651 PDF objects out of 4296 (max. 8388607)
  117 named destinations out of 1000 (max. 500000)

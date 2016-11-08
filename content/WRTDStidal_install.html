@@ -124,19 +124,17 @@ $(document).ready(function () {
 <div id="option-1" class="section level3">
 <h3>Option 1</h3>
 <p>From the R Console prompt, run the following commands to install and load the development version from GitHub.</p>
-<pre class="r"><code>install.packages('devtools')
-library(devtools)
-install_github('fawda123/WRTDStidal')
+<pre class="r"><code>install.packages('WRTDStidal')
 library(WRTDStidal)</code></pre>
 </div>
 <div id="option-2" class="section level3">
 <h3>Option 2</h3>
 <ol style="list-style-type: decimal">
-<li><p>Download the source file: <a href="https://github.com/fawda123/WRTDStidal/archive/v1.0.1.9000.tar.gz">v1.0.1.9000.tar.gz</a></p></li>
+<li><p>Download the source file: <a href="https://cran.r-project.org/src/contrib/WRTDStidal_1.0.1.tar.gz">WRTDStidal_1.0.1.tar.gz</a></p></li>
 <li><p>Install the file using the full file path</p></li>
 </ol>
 <pre class="r"><code># change as needed
-path_to_file &lt;- 'C:/Users/mbeck/Desktop/WRTDStidal-1.0.1.9000.tar.gz'
+path_to_file &lt;- 'C:/Users/mbeck/Desktop/WRTDStidal_1.0.1.tar.gz'
 
 # install, load
 install.packages(path_to_file, repos = NULL, type=&quot;source&quot;)

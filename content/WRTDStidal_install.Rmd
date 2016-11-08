@@ -9,21 +9,19 @@ output: html_document
 From the R Console prompt, run the following commands to install and load the development version from GitHub. 
 
 ```{r eval = FALSE}
-install.packages('devtools')
-library(devtools)
-install_github('fawda123/WRTDStidal')
+install.packages('WRTDStidal')
 library(WRTDStidal)
 ```
 
 ### Option 2
 
-1) Download the source file: [v1.0.1.9000.tar.gz](https://github.com/fawda123/WRTDStidal/archive/v1.0.1.9000.tar.gz)
+1) Download the source file: [WRTDStidal_1.0.1.tar.gz](https://cran.r-project.org/src/contrib/WRTDStidal_1.0.1.tar.gz)
 
 2) Install the file using the full file path
 
 ```{r eval = F}
 # change as needed
-path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal-1.0.1.9000.tar.gz'
+path_to_file <- 'C:/Users/mbeck/Desktop/WRTDStidal_1.0.1.tar.gz'
 
 # install, load
 install.packages(path_to_file, repos = NULL, type="source")

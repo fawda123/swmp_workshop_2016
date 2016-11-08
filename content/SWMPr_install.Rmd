@@ -15,13 +15,13 @@ library(SWMPr)
 
 ### Option 2
 
-1) Download the source file: [v2.1.7.9000.tar.gz](https://github.com/fawda123/SWMPr/archive/v2.1.7.9000.tar.gz)
+1) Download the source file: [SWMPr_2.2.0.tar.gz](https://cran.r-project.org/src/contrib/SWMPr_2.2.0.tar.gz)
 
 2) Install the file using the full file path
 
 ```{r eval = F}
 # change as needed
-path_to_file <- 'C:/Users/mbeck/Desktop/SWMPr-v2.1.7.9000.tar.gz'
+path_to_file <- 'C:/Users/mbeck/Desktop/SWMPr_2.2.0.tar.gz'
 
 # install, load
 install.packages(path_to_file, repos = NULL, type="source")
