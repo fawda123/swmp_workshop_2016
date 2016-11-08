@@ -1,3 +1,40 @@
-\frametitle{\includegraphics [width = 0.05\textwidth ]{imgs/swmprat.png} Using \texttt {decomp} with NERRS data}
-Load some water quality data
-
+\frametitle{Summary}\framesubtitle {}
+\underline{\Bigtxt{Kendall}}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##       tau     slope intercept
+##     0.315     0.887 -1772.618
+##       z
+## 2.1e-11
+##   LCL   UCL
+## 0.606 1.185
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\underline{\Bigtxt{Kendall by yr}}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##       tau     slope intercept
+##     0.758     1.394 -2789.736
+##        z
+## 0.000197
+##   LCL   UCL
+## 0.709 2.014
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\underline{\Bigtxt{Seasonal Kendall}}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##       tau     slope intercept
+##     0.424     0.907 -1354.312
+## Chi-Square (Het)        z (Trend)
+##         7.35e-02         9.87e-17
+##   LCL   UCL
+## 0.667 1.209
+\end{verbatim}
+\end{kframe}
+\end{knitrout}

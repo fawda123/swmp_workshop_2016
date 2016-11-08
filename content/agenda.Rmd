@@ -39,9 +39,13 @@ Attendees must bring a **personal laptop** with the following items installed:
 
 4) Download training modules
 
-5) Install WRTDStidal v1.0.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/WRTDStidal_install) (**afternoon session only**)
+**afternoon session only**
 
-6) Install EnvStats v2.1.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/EnvStats_install) (**afternoon session only**)
+5) Install WRTDStidal v1.0.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/WRTDStidal_install)
+
+6) Install EnvStats v2.1.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/EnvStats_install)
+
+7) Install lubridate v1.6.0 [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/lubridate_install)
 
 ***Current software versions are required!***  *You will have problems if you have older versions installed.* ***The software installation will require Admin Rights on your computer!***  *If you do not have these rights, or do not know the password to allow these rights, your computer IT department/person will need to install this software BEFORE you come to the workshop.*
 

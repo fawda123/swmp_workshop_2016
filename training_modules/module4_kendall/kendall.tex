@@ -159,7 +159,37 @@ Option 2, install the source file from the flash drive:
 
 \hlcom{# install, load}
 \hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
-\hlkwd{library}\hlstd{(SWMPr)}
+\hlkwd{library}\hlstd{(EnvStats)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use functions in the lubridate package \\~\\
+Option 1, from the R Console prompt:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'lubridate'}\hlstd{)}
+\hlkwd{library}\hlstd{(lubridate)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# change as needed}
+\hlstd{path_to_file} \hlkwb{<-} \hlstr{'C:/Users/mbeck/Desktop/lubridate_1.6.0.tar.gz'}
+
+\hlcom{# install, load}
+\hlkwd{install.packages}\hlstd{(path_to_file,} \hlkwc{repos} \hlstd{=} \hlkwa{NULL}\hlstd{,} \hlkwc{type}\hlstd{=}\hlstr{"source"}\hlstd{)}
+\hlkwd{library}\hlstd{(lubridate)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -183,19 +213,30 @@ Both tests:
 \end{frame}
 
 %%%%%%
-\begin{frame}{Theory and background}{}
+\begin{frame}[t]{Theory and background}{}
 \onslide<1->
 The \Bigtxt{Kendall test} for time series:
-$$\tau = \sum_{i = 1}^{n - 1}\sum_{j = i + 1}^{n} sign\left[\left(X_j - X_i\right)\left(Y_j - Y_i\right)\right]$$
+$$S = \sum_{i = 1}^{n - 1}\sum_{j = i + 1}^{n} sign\left[\left(X_j - X_i\right)\left(Y_j - Y_i\right)\right]$$
+$$\hat{\tau} = \frac{2S}{n\left(n - 1\right)}$$
 \begin{center}
-$\tau$ will vary from -1 to 1 similar to a correlation coefficient, follows an approximate normal-distribution for hypothesis-testing
+$\hat{\tau}$ will vary from -1 to 1 similar to a correlation coefficient, follows an approximate normal-distribution for hypothesis-testing
 \end{center}
-\vfill
-\onslide<2->
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Theory and background}{}
+\onslide<1->
+The \Bigtxt{Kendall test} for time series:
 $$\hat{\beta}_1 = Median\left(\frac{Y_j - Y_i}{X_j - X_i}\right), i < j$$
 \begin{center}
 $\hat{\beta}_1$ is the Theil (Sen) non-parametric estimate of slope or the rate of change in the interval
 \end{center}
+\onslide<2->
+All you need to know:\\~\\
+\begin{itemize}
+\item $\hat{\tau}$ is direction and magnitude of trend \\~\\
+\item $\hat{\beta}_1$ is the linear rate of change
+\end{itemize}
 \end{frame}
 
 %%%%%%
@@ -204,7 +245,7 @@ $\hat{\beta}_1$ is the Theil (Sen) non-parametric estimate of slope or the rate 
 The \Bigtxt{Seasonal Kendall test} is exactly the same... \\
 ...except separate tests by month across years (January 1981, 1982, ..., February 1981, 1982, ...), results are pooled. \\~\\
 \begin{itemize}
-\item<2-> Overall $\tau$ is the weighted average of the seasonal estimates \\~\\
+\item<2-> Overall $\hat{\tau}$ is the weighted average of the seasonal estimates \\~\\
 \item<3-> Overall $\hat{\beta_1}$ is the median of all two-point slope estimates within each season \\~\\
 \end{itemize}
 \onslide<4->
@@ -214,21 +255,250 @@ More info in help documentation for \texttt{kendallTrendTest}, \texttt{kendallSe
 \section{Application}
 
 %%%%%%
-\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
-Load some water quality data
+\begin{frame}{Using \texttt{kendallTrendTest} with NERRS data}{}
+\includegraphics<1>[width = \textwidth]{imgs/noc_widg1.PNG}
 
+\includegraphics<2>[width = \textwidth]{imgs/noc_widg2.PNG}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Using \texttt{kendallTrendTest} with NERRS data}{}
+\onslide<1-> 
+Using nutrient data from North Carolina NERR, Zeke's Basin site: \\~\\
+\begin{enumerate}
+\item<1-> Import nutrient data, prep\\~\\
+\item<2-> Test with \texttt{kendallTrendTest}\\~\\
+\item<3-> Interpret results
+\end{enumerate}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\item<1-> Import nutrient data, prep
+\end{enumerate}
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# load SWMPr, nutrient data}
+\hlkwd{library}\hlstd{(SWMPr)}
+\hlkwd{load}\hlstd{(}\hlkwc{file} \hlstd{=} \hlstr{'data/noczbnut.RData'}\hlstd{)}
+
+\hlcom{# rename, qaqc clean up, subset}
+\hlstd{nut} \hlkwb{<-} \hlstd{noczbnut}
+\hlstd{nut} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(nut,} \hlkwc{qaqc_keep} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,} \hlnum{4}\hlstd{))}
+\hlstd{nut} \hlkwb{<-} \hlkwd{subset}\hlstd{(nut,} \hlkwc{select} \hlstd{=} \hlstr{'chla_n'}\hlstd{)}
+\hlstd{nut} \hlkwb{<-} \hlkwd{na.omit}\hlstd{(nut)}
+\hlkwd{head}\hlstd{(nut)}
+\end{alltt}
+\begin{verbatim}
+##         datetimestamp chla_n
+## 1 2002-04-23 15:35:00   2.12
+## 2 2002-05-24 09:20:00   1.60
+## 3 2002-06-24 10:35:00   3.47
+## 4 2002-07-24 09:40:00   4.43
+## 5 2002-08-26 11:31:00   4.65
+## 6 2002-09-24 10:40:00   5.95
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\item<1-> Import nutrient data, prep
+\end{enumerate}
+First look at a plot:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{plot}\hlstd{(nut)}
+\end{alltt}
+\end{kframe}
+
+{\centering \includegraphics[width=\textwidth]{imgs/unnamed-chunk-7-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Test with \texttt{kendallTrendTest}
+\end{enumerate}
+Run the test:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# load libraries, add decimal date}
+\hlkwd{library}\hlstd{(EnvStats)}
+\hlkwd{library}\hlstd{(lubridate)}
+\hlstd{nut}\hlopt{$}\hlstd{dec_yr} \hlkwb{<-} \hlkwd{decimal_date}\hlstd{(nut}\hlopt{$}\hlstd{datetimestamp)}
+
+\hlcom{# run test}
+\hlstd{ests_k1} \hlkwb{<-} \hlkwd{kendallTrendTest}\hlstd{(chla_n} \hlopt{~} \hlstd{dec_yr, nut)}
+\hlstd{ests_k1}\hlopt{$}\hlstd{estimate}
+\end{alltt}
+\begin{verbatim}
+##           tau         slope     intercept 
+##     0.3146341     0.8865779 -1772.6181270
+\end{verbatim}
+\begin{alltt}
+\hlstd{ests_k1}\hlopt{$}\hlstd{p.value}
+\end{alltt}
+\begin{verbatim}
+##            z 
+## 2.097253e-11
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Interpret results
+\end{enumerate}
+Do they make sense? Check seasonality in observed data:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{plot_summary}\hlstd{(nut,} \hlkwc{param} \hlstd{=} \hlstr{'chla_n'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+
+{\centering \includegraphics[width=0.8\textwidth]{imgs/unnamed-chunk-9-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+Option 1: aggregate by years
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# get annual averages}
+\hlstd{nutyr} \hlkwb{<-} \hlkwd{aggreswmp}\hlstd{(nut,} \hlkwc{by} \hlstd{=} \hlstr{'years'}\hlstd{)}
+
+\hlcom{# convert datetimestamp to numeric for year}
+\hlstd{nutyr}\hlopt{$}\hlstd{yr} \hlkwb{<-} \hlkwd{year}\hlstd{(nutyr}\hlopt{$}\hlstd{datetimestamp)}
+
+\hlcom{# run test}
+\hlstd{ests_k2} \hlkwb{<-} \hlkwd{kendallTrendTest}\hlstd{(chla_n} \hlopt{~} \hlstd{yr, nutyr)}
+\hlstd{ests_k2}\hlopt{$}\hlstd{estimate}
+\end{alltt}
+\begin{verbatim}
+##           tau         slope     intercept 
+##     0.7582418     1.3938194 -2789.7357522
+\end{verbatim}
+\begin{alltt}
+\hlstd{ests_k2}\hlopt{$}\hlstd{p.value}
+\end{alltt}
+\begin{verbatim}
+##            z 
+## 0.0001971407
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallSeasonalTrendTest} with NERRS data}
+Option 2: use \texttt{kendallSeasonalTrendTest}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# some additional prep for season and year columns}
+\hlstd{nut}\hlopt{$}\hlstd{season} \hlkwb{<-} \hlkwd{month}\hlstd{(nut}\hlopt{$}\hlstd{datetimestamp)}
+\hlstd{nut}\hlopt{$}\hlstd{yr} \hlkwb{<-} \hlkwd{year}\hlstd{(nut}\hlopt{$}\hlstd{datetimestamp)}
+
+\hlcom{# run test}
+\hlstd{ests_sk} \hlkwb{<-} \hlkwd{kendallSeasonalTrendTest}\hlstd{(chla_n} \hlopt{~} \hlstd{season} \hlopt{+} \hlstd{yr,} \hlkwc{data} \hlstd{= nut)}
+\hlstd{ests_sk}\hlopt{$}\hlstd{estimate}
+\end{alltt}
+\begin{verbatim}
+##          tau        slope    intercept 
+##     0.423886     0.907000 -1354.312500
+\end{verbatim}
+\begin{alltt}
+\hlstd{ests_sk}\hlopt{$}\hlstd{p.value}
+\end{alltt}
+\begin{verbatim}
+## Chi-Square (Het)        z (Trend) 
+##     7.346318e-02     9.868358e-17
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{frame}
 
 \section{Summary}
 
 %%%%%%
+\begin{frame}[t, fragile, shrink]{Summary}{}
+\underline{\Bigtxt{Kendall}}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##       tau     slope intercept 
+##     0.315     0.887 -1772.618
+##       z 
+## 2.1e-11
+##   LCL   UCL 
+## 0.606 1.185
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\underline{\Bigtxt{Kendall by yr}}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##       tau     slope intercept 
+##     0.758     1.394 -2789.736
+##        z 
+## 0.000197
+##   LCL   UCL 
+## 0.709 2.014
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\underline{\Bigtxt{Seasonal Kendall}}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##       tau     slope intercept 
+##     0.424     0.907 -1354.312
+## Chi-Square (Het)        z (Trend) 
+##         7.35e-02         9.87e-17
+##   LCL   UCL 
+## 0.667 1.209
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
 \begin{frame}{Summary}{}
 \onslide<1->
-Things to ask before Seasonal Kendall \\~\\
+Final comments: \\~\\
 \begin{itemize}
-\item test \\~\\
+\item<1-> If you expect cyclical variation - aggregate to remove or use Seasonal Kendall \\~\\
+\item<2-> Seasonal Kendall requires more work but has more power \\~\\
+\item<3-> All of the above methods only detect a monotonic trend, do not account for other variables \\~\\
+\item<4-> You can pick your time interval or use an alternative approach (e.g., WRTDS)
 \end{itemize}
-What does Seasonal Kendall not tell us
 \end{frame}
 
 %%%%%%

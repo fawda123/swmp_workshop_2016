@@ -117,7 +117,29 @@ path_to_file <- 'C:/Users/mbeck/Desktop/EnvStats_2.1.1.tar.gz'
 
 # install, load
 install.packages(path_to_file, repos = NULL, type="source")
-library(SWMPr)
+library(EnvStats)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Is everything installed?}
+\onslide<1->
+We will use functions in the lubridate package \\~\\
+Option 1, from the R Console prompt:
+<<eval = FALSE>>=
+install.packages('lubridate')
+library(lubridate)
+@
+\onslide<2->
+\vspace{0.1in}
+Option 2, install the source file from the flash drive:
+<<eval = F>>=
+# change as needed
+path_to_file <- 'C:/Users/mbeck/Desktop/lubridate_1.6.0.tar.gz'
+
+# install, load
+install.packages(path_to_file, repos = NULL, type="source")
+library(lubridate)
 @
 \end{frame}
 
@@ -139,19 +161,30 @@ Both tests:
 \end{frame}
 
 %%%%%%
-\begin{frame}{Theory and background}{}
+\begin{frame}[t]{Theory and background}{}
 \onslide<1->
 The \Bigtxt{Kendall test} for time series:
-$$\tau = \sum_{i = 1}^{n - 1}\sum_{j = i + 1}^{n} sign\left[\left(X_j - X_i\right)\left(Y_j - Y_i\right)\right]$$
+$$S = \sum_{i = 1}^{n - 1}\sum_{j = i + 1}^{n} sign\left[\left(X_j - X_i\right)\left(Y_j - Y_i\right)\right]$$
+$$\hat{\tau} = \frac{2S}{n\left(n - 1\right)}$$
 \begin{center}
-$\tau$ will vary from -1 to 1 similar to a correlation coefficient, follows an approximate normal-distribution for hypothesis-testing
+$\hat{\tau}$ will vary from -1 to 1 similar to a correlation coefficient, follows an approximate normal-distribution for hypothesis-testing
 \end{center}
-\vfill
-\onslide<2->
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Theory and background}{}
+\onslide<1->
+The \Bigtxt{Kendall test} for time series:
 $$\hat{\beta}_1 = Median\left(\frac{Y_j - Y_i}{X_j - X_i}\right), i < j$$
 \begin{center}
 $\hat{\beta}_1$ is the Theil (Sen) non-parametric estimate of slope or the rate of change in the interval
 \end{center}
+\onslide<2->
+All you need to know:\\~\\
+\begin{itemize}
+\item $\hat{\tau}$ is direction and magnitude of trend \\~\\
+\item $\hat{\beta}_1$ is the linear rate of change
+\end{itemize}
 \end{frame}
 
 %%%%%%
@@ -160,7 +193,7 @@ $\hat{\beta}_1$ is the Theil (Sen) non-parametric estimate of slope or the rate 
 The \Bigtxt{Seasonal Kendall test} is exactly the same... \\
 ...except separate tests by month across years (January 1981, 1982, ..., February 1981, 1982, ...), results are pooled. \\~\\
 \begin{itemize}
-\item<2-> Overall $\tau$ is the weighted average of the seasonal estimates \\~\\
+\item<2-> Overall $\hat{\tau}$ is the weighted average of the seasonal estimates \\~\\
 \item<3-> Overall $\hat{\beta_1}$ is the median of all two-point slope estimates within each season \\~\\
 \end{itemize}
 \onslide<4->
@@ -170,21 +203,155 @@ More info in help documentation for \texttt{kendallTrendTest}, \texttt{kendallSe
 \section{Application}
 
 %%%%%%
-\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{decomp} with NERRS data}
-Load some water quality data
+\begin{frame}{Using \texttt{kendallTrendTest} with NERRS data}{}
+\includegraphics<1>[width = \textwidth]{imgs/noc_widg1.PNG}
 
+\includegraphics<2>[width = \textwidth]{imgs/noc_widg2.PNG}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Using \texttt{kendallTrendTest} with NERRS data}{}
+\onslide<1-> 
+Using nutrient data from North Carolina NERR, Zeke's Basin site: \\~\\
+\begin{enumerate}
+\item<1-> Import nutrient data, prep\\~\\
+\item<2-> Test with \texttt{kendallTrendTest}\\~\\
+\item<3-> Interpret results
+\end{enumerate}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\item<1-> Import nutrient data, prep
+\end{enumerate}
+\onslide<2->
+<<>>=
+# load SWMPr, nutrient data
+library(SWMPr)
+load(file = 'data/noczbnut.RData')
+
+# rename, qaqc clean up, subset
+nut <- noczbnut
+nut <- qaqc(nut, qaqc_keep = c(0, 4)) 
+nut <- subset(nut, select = 'chla_n')
+nut <- na.omit(nut)
+head(nut)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\item<1-> Import nutrient data, prep
+\end{enumerate}
+First look at a plot:
+<<echo = 2, fig.height = 3, fig.width = 8, out.width = '\\textwidth'>>=
+par(mar = c(4, 4, 0.5, 0.5))
+plot(nut)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Test with \texttt{kendallTrendTest}
+\end{enumerate}
+Run the test:
+<<>>=
+# load libraries, add decimal date
+library(EnvStats)
+library(lubridate)
+nut$dec_yr <- decimal_date(nut$datetimestamp) 
+
+# run test
+ests_k1 <- kendallTrendTest(chla_n ~ dec_yr, nut)
+ests_k1$estimate
+ests_k1$p.value
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Interpret results
+\end{enumerate}
+Do they make sense? Check seasonality in observed data:
+<<out.width = '0.8\\textwidth', fig.height = 6, fig.width = 10>>=
+plot_summary(nut, param = 'chla_n')
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallTrendTest} with NERRS data}
+Option 1: aggregate by years
+<<>>=
+# get annual averages
+nutyr <- aggreswmp(nut, by = 'years')
+
+# convert datetimestamp to numeric for year
+nutyr$yr <- year(nutyr$datetimestamp)
+
+# run test
+ests_k2 <- kendallTrendTest(chla_n ~ yr, nutyr)
+ests_k2$estimate
+ests_k2$p.value
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Using \texttt{kendallSeasonalTrendTest} with NERRS data}
+Option 2: use \texttt{kendallSeasonalTrendTest}
+<<>>=
+# some additional prep for season and year columns
+nut$season <- month(nut$datetimestamp)
+nut$yr <- year(nut$datetimestamp)
+
+# run test
+ests_sk <- kendallSeasonalTrendTest(chla_n ~ season + yr, data = nut)
+ests_sk$estimate
+ests_sk$p.value
+@
 \end{frame}
 
 \section{Summary}
 
 %%%%%%
+\begin{frame}[t, fragile, shrink]{Summary}{}
+\underline{\Bigtxt{Kendall}}
+<<echo = F>>=
+options(digits = 3)
+ests_k1$estimate
+ests_k1$p.value
+ests_k1$interval$limits
+@
+\underline{\Bigtxt{Kendall by yr}}
+<<echo = F>>=
+ests_k2$estimate
+ests_k2$p.value
+ests_k2$interval$limits
+@
+\underline{\Bigtxt{Seasonal Kendall}}
+<<echo = F >>=
+ests_sk$estimate
+ests_sk$p.value
+ests_sk$interval$limits
+options(digits = 7)
+@
+\end{frame}
+
+%%%%%%
 \begin{frame}{Summary}{}
 \onslide<1->
-Things to ask before Seasonal Kendall \\~\\
+Final comments: \\~\\
 \begin{itemize}
-\item test \\~\\
+\item<1-> If you expect cyclical variation - aggregate to remove or use Seasonal Kendall \\~\\
+\item<2-> Seasonal Kendall requires more work but has more power \\~\\
+\item<3-> All of the above methods only detect a monotonic trend, do not account for other variables \\~\\
+\item<4-> You can pick your time interval or use an alternative approach (e.g., WRTDS)
 \end{itemize}
-What does Seasonal Kendall not tell us
 \end{frame}
 
 %%%%%%

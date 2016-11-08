@@ -62,7 +62,7 @@ Topic 3: Seasonal Kendall tests
 * Presentation on the theory and rationale of Seasonal Kendall Tests
 * Evaluate the significance and direction of a trend using NERRS data
     
-Materials: presentation, script
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module4_kendall/kendall.pdf" target = "_parent">presentation</a>, script
 
 ### 5:00pm ADJOURN
 
