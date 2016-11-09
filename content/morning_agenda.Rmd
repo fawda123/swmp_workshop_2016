@@ -10,10 +10,12 @@ output:
 
 The **morning session** will cover the basics of R and SWMPr.  R is a data analysis software and programming language and SWMPr is an R package designed for working with SWMP data.  
 
+[Download content](https://fawda123.github.io/swmp_workshop_2016/content/flashdrive/morning.zip)
+
 ### Objectives
 
 1) Review some R basics such as importing data and plotting
-2) Demonstrate useful functions in the SWMPr package
+2) Demonstrate useful functions in the <a href="https://journal.r-project.org/archive/accepted/beck.pdf" target= "_parent">SWMPr</a> package
 3) Investigate how real data from your Reserve can be processed and visualized
 
 ### 7:30am Software set-up/help
@@ -27,8 +29,7 @@ Instructors will assist workshop attendees with **last‐minute** software issue
 
 ### 8:15am Powerpoint presentation
 
-* Overview of the morning session 
-* why it's worth your effort to learn R
+* Why it's worth your effort to learn R
 
 ### 8:40am Part I: Data import and plots
 

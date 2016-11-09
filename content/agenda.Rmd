@@ -31,21 +31,23 @@ Both sessions will prepare users to better navigate R software for tackling SWMP
 
 Attendees must bring a **personal laptop** with the following items installed:
 
+**Morning and afternoon sessions**
+
 1) Install R v3.3.1 (or later): <a href="http://swmprats.net/workshop-2014/images/documents/R_install_guide.pdf" target="_parent">Instructions</a> (page 1 - 4)
 
 2) Install RStudio v1.0.44 (or later): <a href="http://swmprats.net/workshop-2014/images/documents/R_install_guide.pdf" target="_parent">Instructions</a> (page 5 - 6)
 
 3) Install SWMPr v2.2.0: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/SWMPr_install)
 
-4) Download training modules
+4) Download training modules: [morning content](https://fawda123.github.io/swmp_workshop_2016/content/flashdrive/morning.zip), afternoon
 
-**afternoon session only**
+**Afternoon session only**
 
 5) Install WRTDStidal v1.0.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/WRTDStidal_install)
 
 6) Install EnvStats v2.1.1: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/EnvStats_install)
 
-7) Install lubridate v1.6.0 [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/lubridate_install)
+7) Install lubridate v1.6.0: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/lubridate_install)
 
 ***Current software versions are required!***  *You will have problems if you have older versions installed.* ***The software installation will require Admin Rights on your computer!***  *If you do not have these rights, or do not know the password to allow these rights, your computer IT department/person will need to install this software BEFORE you come to the workshop.*
 
