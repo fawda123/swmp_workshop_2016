@@ -10,7 +10,7 @@ output:
 
 The **morning session** will cover the basics of R and SWMPr.  R is a data analysis software and programming language and SWMPr is an R package designed for working with SWMP data.  
 
-[Download content](https://fawda123.github.io/swmp_workshop_2016/content/flashdrive/morning.zip)
+[Download content](https://fawda123.github.io/swmp_workshop_2016/flashdrive/morning.zip)
 
 ### Objectives
 

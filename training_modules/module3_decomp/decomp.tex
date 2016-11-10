@@ -245,7 +245,7 @@ These are not new methods, they just make it easy to decompose NERRS data - work
 \begin{itemize}
 \item<2-> Almost identical to the \texttt{decompose} function
 \item<3-> Works well for time series with daily or seasonal cycles
-\item<4-> Separates components as trend, cyclical variation (e.g., annaul, daily), and random
+\item<4-> Separates components as trend, cyclical variation (e.g., annual, daily), and random
 \item<5-> Additive or multiplicative decomposition
 \end{itemize}
 \end{column}
@@ -471,13 +471,13 @@ Note that the default behavior for \texttt{decomp\_cj} is a plot, use \texttt{va
 \hlkwd{head}\hlstd{(add)}
 \end{alltt}
 \begin{verbatim}
-##         Time original annual  seasonal  events
-## 1 2002-01-01       NA  -2.05 -1.550000      NA
-## 2 2002-02-01       NA  -2.05 -0.400000      NA
-## 3 2002-03-01       NA  -2.05 -0.807500      NA
-## 4 2002-04-01      1.6  -2.05 -0.562500 -0.6875
-## 5 2002-05-01       NA  -2.05  1.258333      NA
-## 6 2002-06-01      3.4  -2.05  0.220000  0.3300
+##         Time original    grand    annual   seasonal     events
+## 1 2002-01-01       NA 5.929384 -2.760634 -1.9742526         NA
+## 2 2002-02-01       NA 5.929384 -2.760634 -0.4467677         NA
+## 3 2002-03-01       NA 5.929384 -2.760634 -1.6590556         NA
+## 4 2002-04-01      1.6 5.929384 -2.760634 -1.2348774 -0.3338726
+## 5 2002-05-01       NA 5.929384 -2.760634  1.3020742         NA
+## 6 2002-06-01      3.4 5.929384 -2.760634  0.4469690 -0.2157190
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -504,13 +504,13 @@ A word of caution, \texttt{decomp\_cj} uses \texttt{setstep} before decomposing
 \hlkwd{head}\hlstd{(add)}
 \end{alltt}
 \begin{verbatim}
-##         Time original annual  seasonal  events
-## 1 2002-01-01       NA  -2.05 -1.550000      NA
-## 2 2002-02-01       NA  -2.05 -0.400000      NA
-## 3 2002-03-01       NA  -2.05 -0.807500      NA
-## 4 2002-04-01      1.6  -2.05 -0.562500 -0.6875
-## 5 2002-05-01       NA  -2.05  1.258333      NA
-## 6 2002-06-01      3.4  -2.05  0.220000  0.3300
+##         Time original    grand    annual   seasonal     events
+## 1 2002-01-01       NA 5.929384 -2.760634 -1.9742526         NA
+## 2 2002-02-01       NA 5.929384 -2.760634 -0.4467677         NA
+## 3 2002-03-01       NA 5.929384 -2.760634 -1.6590556         NA
+## 4 2002-04-01      1.6 5.929384 -2.760634 -1.2348774 -0.3338726
+## 5 2002-05-01       NA 5.929384 -2.760634  1.3020742         NA
+## 6 2002-06-01      3.4 5.929384 -2.760634  0.4469690 -0.2157190
 \end{verbatim}
 \end{kframe}
 \end{knitrout}

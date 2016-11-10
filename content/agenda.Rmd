@@ -39,7 +39,7 @@ Attendees must bring a **personal laptop** with the following items installed:
 
 3) Install SWMPr v2.2.0: [Instructions](https://fawda123.github.io/swmp_workshop_2016/content/SWMPr_install)
 
-4) Download training modules: [morning content](https://fawda123.github.io/swmp_workshop_2016/content/flashdrive/morning.zip), afternoon
+4) Download training modules: [morning content](https://fawda123.github.io/swmp_workshop_2016/flashdrive/morning.zip), afternoon
 
 **Afternoon session only**
 

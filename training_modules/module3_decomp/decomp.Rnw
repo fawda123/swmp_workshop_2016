@@ -315,7 +315,7 @@ These are not new methods, they just make it easy to decompose NERRS data - work
 \begin{itemize}
 \item<2-> Almost identical to the \texttt{decompose} function
 \item<3-> Works well for time series with daily or seasonal cycles
-\item<4-> Separates components as trend, cyclical variation (e.g., annaul, daily), and random
+\item<4-> Separates components as trend, cyclical variation (e.g., annual, daily), and random
 \item<5-> Additive or multiplicative decomposition
 \end{itemize}
 \end{column}
