@@ -36,7 +36,7 @@ Instructors will assist workshop attendees with **last‐minute** software issue
 * Refresher on reading in data and beginning to plot
 * brief overview of some R basics
 
-### 9:15am Part II: Using R to deal with difficult data, Case Study 1
+### 9:15am Part II: Using SWMPr to deal with difficult data, Case Study 1
 
 Case Study 1: import_local and QAQC
 
@@ -45,7 +45,7 @@ Case Study 1: import_local and QAQC
 
 ### 10:00am BREAK
 
-### 10:15am Part II: Using R to deal with difficult data, Case Study 2
+### 10:15am Part II: Using SWMPr to deal with difficult data, Case Study 2
 
 Case Study II: aggreswmp
 
@@ -53,7 +53,7 @@ Case Study II: aggreswmp
 * aggregate by function   
 * try some different plotting types  
 
-### 11:00am Part II: Using R to deal with difficult data, Case Study 3
+### 11:00am Part II: Using SWMPr to deal with difficult data, Case Study 3
 
 Case Study III: Overplotting ISCO and WQ data
 
