@@ -44,7 +44,7 @@ Topic 1: Weighted regression in tidal waters
 * Presentation on the theory and rationale of WRTDS for tidal waters
 * Apply WRTDS to NERRS sites, assess model fit, create visualization of results
     
-Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/widgets.R" target = "_parent">script</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/noczbnut.RData" target = "_parent">noczbnut.RData</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/noczbwq.RData" target = "_parent">noczbwq.RData</a>
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/wrtds.R" target = "_parent">script</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/noczbnut.RData" target = "_parent">noczbnut.RData</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/noczbwq.RData" target = "_parent">noczbwq.RData</a>
 
 ### 3:00pm BREAK
 
