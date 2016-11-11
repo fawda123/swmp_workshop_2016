@@ -17,6 +17,8 @@ Marcus W. Beck - USEPA, [beck.marcus@epa.gov](mailto:beck.marcus@epa.gov)
 
 See our <a href="http://swmprats.net/swmprats-team" target="_parent">bio page</a> for more info.
 
+Agendas: <a href="http://swmprats.net/2016-workshop/morning" target="_parent">morning</a>, <a href="http://swmprats.net/2016-workshop/afternoon" target="_parent">afternoon</a>
+
 ### Description
 
 The purpose of the training workshop is to give users a hands-on, interactive introduction to the R analysis platform, the SWMPr package for R, the widgets of SWMPrats, and selected time series topics.  
