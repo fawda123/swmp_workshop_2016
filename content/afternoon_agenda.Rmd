@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The **afternoon session** will be an overview of the widgets of SWMPrats and selected time series topics.  The <a href="http://swmprats.net" target = "_parent">SWMPrats</a> website was created to assist the NERRS program with analysis and interpretation of SWMP data.  Three widgets on the website allow users to summarize trends within and between sites using a point-and-click approach.  Selected time series topics will include weighted regression for trend analysis, time series decomposition, and Seasonal Kendall tests.  
 
-[Download content](https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon.zip) (individual content below)
+[Download all content](https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon.zip) (individual content below)
 
 ### Objectives
 
@@ -44,7 +44,7 @@ Topic 1: Weighted regression in tidal waters
 * Presentation on the theory and rationale of WRTDS for tidal waters
 * Apply WRTDS to NERRS sites, assess model fit, create visualization of results
     
-Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/widgets.R" target = "_parent">script</a>
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/widgets.R" target = "_parent">script</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/noczbnut.RData" target = "_parent">noczbnut.RData</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/noczbwq.RData" target = "_parent">noczbwq.RData</a>
 
 ### 3:00pm BREAK
 
@@ -64,7 +64,7 @@ Topic 3: Seasonal Kendall tests
 * Presentation on the theory and rationale of Seasonal Kendall Tests
 * Evaluate the significance and direction of a trend using NERRS data
     
-Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module4_kendall/kendall.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/kendall.R" target = "_parent">script</a>
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module4_kendall/kendall.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/kendall.R" target = "_parent">script</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon/noczbnut.RData" target = "_parent">noczbnut.RData</a>
 
 ### 5:00pm ADJOURN
 
