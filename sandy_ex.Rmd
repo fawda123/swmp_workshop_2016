@@ -1,0 +1,56 @@
+---
+output: html_document
+---
+
+```{r fig.height = 6, fig.width = 6, message = F}
+library(SWMPr)
+
+# map the reserve
+map_reserve('jac')
+```
+```{r fig.height = 2, fig.width = 7, message = F}
+# import data from jacne
+path <- 'M:/docs/swmp_workshop_2014/training_modules/data/dataset4'
+wq_dat <- import_local(path, 'jacnewq')
+nut_dat <- import_local(path, 'jacnenut')
+met_dat <- import_local(path, 'jacncmet')
+
+# qaqc process, remove empty columns
+wq_dat <- subset(qaqc(wq_dat), rem_cols = T)
+nut_dat <- subset(qaqc(nut_dat), rem_cols = T)
+met_dat <- subset(qaqc(met_dat), rem_cols = T)
+
+# combine and subset by two months before and after hurrican landfall
+dat <- comb(wq_dat, nut_dat, met_dat)
+dat <- subset(dat, subset = c('2012-09-01 0:0', '2012-12-31 23:45'), rem_col = T)
+```
+```{r fig.height = 3, fig.width = 7, message = F}
+# create some wx plots to see when the storm passed
+par(mar = c(4, 4, 0.5, 0.5))
+plot(atemp ~ datetimestamp, data = dat, type = 'l')
+plot(bp ~ datetimestamp, data = dat, type = 'l')
+plot(wspd ~ datetimestamp, data = dat, type = 'l')
+plot(totprcp~ datetimestamp, data = dat,  type = 'l')
+plot(cumprcp ~ datetimestamp, data = dat,  type = 'l')
+
+# create some wq plots to see when the storm passed
+plot(temp ~ datetimestamp, data = dat, type = 'l')
+plot(sal ~ datetimestamp, data = dat, type = 'l')
+plot(do_mgl ~ datetimestamp, data = dat,  type = 'l')
+plot(depth ~ datetimestamp, data = dat,  type = 'l')
+plot(turb ~ datetimestamp, data = dat, type = 'l')
+
+
+# summary of data, before/after passage
+agg_out <- aggreswmp(dat, by = 'weeks', aggs_out = T)
+boxplot(do_mgl ~ datetimestamp, agg_out, ylab = 'do_mgl')
+boxplot(depth ~ datetimestamp, agg_out, ylab = 'Water depth')
+boxplot(bp ~ datetimestamp, agg_out, ylab = 'Barometric pressure')
+boxplot(wspd ~ datetimestamp, agg_out, ylab = 'Wind speed')
+
+# create some smoothed plots
+sal_smooth <- smoother(dat, params = 'sal', window = 200)
+plot(sal ~ datetimestamp, data = dat, type = 'l')
+lines(sal_smooth$datetimestamp, sal_smooth$sal, col = 'red')
+```
+
