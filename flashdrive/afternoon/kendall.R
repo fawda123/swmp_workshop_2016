@@ -4,7 +4,7 @@
 
 # load SWMPr, nutrient data
 library(SWMPr)
-load(file = 'data/noczbnut.RData')
+load(file = 'noczbnut.RData')
 
 # rename, qaqc clean up, subset
 nut <- noczbnut

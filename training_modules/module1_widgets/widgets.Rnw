@@ -199,7 +199,7 @@ Options for tabular data and saving plots/tables
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Widgets of SWMPrats.net: SWMP summary}
+\begin{frame}[fragile]{\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Widgets of SWMPrats.net: SWMP summary}
 Note: The \texttt{plot\_summary} function in SWMPr is used to create the plots.
 <<eval = F>>=
 library(SWMPr)
@@ -226,7 +226,7 @@ plot_summary(dat, param = 'chla_n', year = c(2007, 2013), sum_out = TRUE)
 
 %%%%%%
 \begin{frame}{Widgets of SWMPrats.net: SWMP compare}
-\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png}  Compare trends for a single parameter between reserves/space
+\includegraphics[width = 0.05\textwidth]{imgs/swmprat.png} Compare trends for a single parameter between reserves/space
 \centerline{\fbox{\includegraphics[width = 0.8\textwidth]{imgs/swmp_comp.png}}}
 \end{frame}
 
@@ -256,7 +256,7 @@ Zoom the map to view finer spatial scale and click to view results for single st
 \end{frame}
 
 %%%%%%
-\begin{frame}{Widgets of SWMPrats.net: SWMP summary}
+\begin{frame}{Widgets of SWMPrats.net: SWMP aggregate}
 \onslide<1->
 This app allows multiple comparisons: \\~\\
 \begin{itemize}

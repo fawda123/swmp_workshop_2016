@@ -1,4 +1,4 @@
-\frametitle{Widgets of SWMPrats.net: SWMP summary}
+\frametitle{\includegraphics [width = 0.05\textwidth ]{imgs/swmprat.png} Widgets of SWMPrats.net: SWMP summary}
 Note: The \texttt{plot\_summary} function in SWMPr is used to create the plots.
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
