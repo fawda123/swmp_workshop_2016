@@ -1,0 +1,172 @@
+---
+title: "Supplement to time series decomposition"
+author: "Dave Eslinger, Marcus Beck"
+date: "November 10, 2016"
+output: html_document
+---
+
+This document demonstrates some generic approaches to time series decomposition using Fourier transformations (<a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/fft.html" target = "_parent">fft</a> function in the base <a href ="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html" target = "_parent">stats</a> package.  The first examples uses generic data and the second uses SWMP data.   
+
+# Generic data
+
+```{r fig.height = 3.5, fig.width =9, message = F, echo = -1}
+par(mar = c(4, 4, 1, 0.5))
+#Domain setup
+T=2^8.
+dt <- 1/(2**4) #s
+n <- T/dt
+#F F/2
+#freq = .01
+df <- 1/T
+t <- seq(0,T,by=dt) #also try ts function
+#CREATE OUR FREQUENCY ARRAY
+f <- 1:length(t)/T
+period <- 1/f
+
+#CREATE OUR TIME SERIES DATA
+#y <- 5*sin(2*pi*1/2*t ) + 2*sin(2*pi*5/16*t) + 6*sin(2*pi*3/32*t) + 1*sin(2*pi*1/256*t)
+y <- 2.5 *sin(2*pi*1*t) +
+   + 1*sin(2*pi*1/2*t ) +
+   + 2*sin(2*pi*5/16*t) +
+   + 3*sin(2*pi*1/128*t)
+
+#FOURIER TRANSFORM WORK
+Y <- fft(y)
+mag <- sqrt(Re(Y)^2+Im(Y)^2)*2/n
+phase <- atan(Im(Y)/Re(Y))
+Yr <- Re(Y)
+Yi <- Im(Y)
+
+mag_sorted <- sort(mag[1:(length(mag)/2)], decreasing = TRUE, index.return = TRUE)
+head(mag_sorted$x,10)
+
+#PLOTTING
+plot(t[1:length(f)/2],y[1:length(f)/2],'l')
+plot(f[1:length(f)/8],mag[1:length(f)/8],'l')
+
+#Square wave, magnitude -1 to 1, based on frequency of y
+#sq = (2.0 * (sin(2*pi*(1/8)*t) > 0)) - 1
+sq <- 1.0 + sin(2*pi*(1/8)*t)
+sq <- ifelse(sq > 1, 2.0,sq)
+sq <- ifelse(sq < 1, 0.,sq)
+
+# if(foo > 0) {
+#   sq = 1
+# } elseif (sq < 0) {
+#   sq = -1
+# }
+#FOURIER TRANSFORM WORK
+Ysq <- fft(sq)
+magsq <- sqrt(Re(Ysq)^2+Im(Ysq)^2)*2/n
+#PLOTTING
+plot(t[1:length(f)/4],sq[1:length(f)/4],'l')
+plot(f[1:length(f)/8],magsq[1:length(f)/8],'l')
+#plot(t[1:length(f)/32],magsq[1:length(f)/32],'l')
+
+# Time series that is not exact mulitple of sampling:
+#CREATE OUR TIME SERIES DATA
+y1 <- 3*sin(2*pi*1/4.1*t ) +5* sin(2*pi*1/16.1*t)
+#FOURIER TRANSFORM WORK
+Y1 <- fft(y1)
+mag1 <- sqrt(Re(Y1)^2+Im(Y1)^2)*2/n
+phase1 <- atan(Im(Y1)/Re(Y1))
+Yr <- Re(Y1)
+Yi <- Im(Y1)
+
+mag_sorted1 <- sort(mag1[1:(length(mag1)/2)], decreasing = TRUE, index.return = TRUE)
+head(mag_sorted1$x,10)
+
+#PLOTTING
+plot(t[1:length(f)/4],y1[1:length(f)/4],'l')
+plot(f[1:length(f)/128],mag1[1:length(f)/128],'l')
+```
+
+# SWMP data
+
+```{r fig.height = 3.5, fig.width =9, message = F, echo = -1, warning = F}
+par(mar = c(4, 4, 0.5, 0.5))
+# Time series test 
+#
+
+## load the SWMPr package, you must have it installed
+library(SWMPr)
+
+## get data for apacpwq, all years
+## import and assign to 'dat'
+dat <- apacpwq
+
+## view first six rows
+head(dat)
+dat <- qaqc(dat)
+
+plot(temp ~ datetimestamp, dat,type='l')
+plot(sal ~ datetimestamp, dat,type='l')
+plot(do_mgl ~ datetimestamp, dat,type='l')
+plot(do_pct ~ datetimestamp, dat,type='l')
+plot(ph ~ datetimestamp, dat,type='l')
+
+#  Define the needed paramters to create a time series:
+
+#  Time step, i.e.sampling interval, IN DAYS:
+delta_T = 15. / (60 * 24) # 15 minute data, converted into fraction of a day: 15 min/(minutes/hour * hours/ day)
+#  Start "time" is not really a time, but the start of the time series:
+T_Start = 0.0
+#  End time is really the number of days worth of data:
+T_End = (length(dat$temp)-1.)/(4. * 24.) # = number of intervals / (4 obs/hour * 24 hours/day) gives # of days 
+
+# As an aside: Data series that are powers of two make this more efficient.  Let's not worry about that at present. 
+
+#  Create an array of times for each data point:
+Time <- seq(T_Start,T_End,by=delta_T)
+
+#  CREATE OUR FREQUENCY ARRAY
+f <- seq(from=0.0, to=length(Time)-1.0,by=1.0)/(T_End-T_Start)
+
+#Lets look at Water Temperature:
+ts <- na.approx(dat$temp) # Fill missing (NA) values with interpolated points
+bar <- matrix(c(Time,ts),ncol=2)
+foobar <- subset(bar, bar[,2] < 35)
+plot(Time,ts,'l',col='black',xlab="Time (Days)",ylab="Temperature")  # BECAUSE YOU ALWAYS LOOK AT THE DATA FIRST!!!
+ts_avg = mean(ts)
+abline(h = ts_avg, col='blue')  # Add a line for the mean
+
+# Hmm, clearly a trend, so lets find and plot the linear portion:
+ts_regr <- lm(ts ~ Time)
+ts_regr
+abline(ts_regr,'l',col='red')
+
+# Now, calculate that trend and remove it:
+T_trend = predict.lm(ts_regr)
+plot(Time,T_trend,xlim=c(T_Start,T_End)) # Plot this to check that it is correct
+abline(ts_regr, 'l', col='red') #compare to slope & intercept
+# And it looks correct, so remove it:
+ts_detrend = ts - T_trend
+plot(Time,ts_detrend,'l',xlim=c(T_Start,T_End))
+
+# Now the data are STATIONARY, i.e., the MEAN and varibility are constant throu time.
+# So lets find what frequencies are dominating the signal!
+
+#FOURIER TRANSFORM WORK
+Y <- fft(ts_detrend)
+mag <- sqrt(Re(Y)^2+Im(Y)^2)*2/length(ts_detrend)
+phase <- atan(Im(Y)/Re(Y))
+Yr <- Re(Y)
+Yi <- Im(Y)
+
+#Plot the results
+plot(f[1:length(f)/2000],mag[1:length(f)/2000],'l',
+     xlab="Freq., day^-1",ylab=       "Power")
+abline(h=1,col='red')
+abline(h=2,col='red')
+abline(h=5,col='red')
+
+mag_sorted <- sort(mag[1:(length(mag)/2)], decreasing = TRUE, index.return = TRUE)
+head(mag_sorted$x,10)
+head(mag,10)
+topMag <- mag_sorted$ix[1:10]
+f[topMag]
+f[4]
+f[2]
+f[18]
+print(mag_sorted$x[0:10],topMag,f[topMag])
+```

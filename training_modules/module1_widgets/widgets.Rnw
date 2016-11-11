@@ -75,8 +75,8 @@ devtools::load_all('M:/docs/SWMPr')
 %%%%%%
 \begin{frame}{Interactive portion}
 \onslide<+->
-There are no materials for this module, pull up the website or follow on my screen\\~\\
-Other modules: \\~\\
+We will use the widgets on the website or follow on my screen\\~\\
+Following along as we go: \\~\\
 \begin{itemize}
 \item flash drive\\~\\
 \item online: \href{http://swmprats.net/}{swmprats.net} 2016 workshop tab \\~\\

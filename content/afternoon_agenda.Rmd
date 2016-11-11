@@ -14,6 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The **afternoon session** will be an overview of the widgets of SWMPrats and selected time series topics.  The <a href="http://swmprats.net" target = "_parent">SWMPrats</a> website was created to assist the NERRS program with analysis and interpretation of SWMP data.  Three widgets on the website allow users to summarize trends within and between sites using a point-and-click approach.  Selected time series topics will include weighted regression for trend analysis, time series decomposition, and Seasonal Kendall tests.  
 
+[Download content](https://fawda123.github.io/swmp_workshop_2016/flashdrive/afternoon.zip) (individual content below)
+
 ### Objectives
 
 1) Understand the resources provided by SWMPrats
@@ -33,7 +35,7 @@ Overview of interactive <a href="http://swmprats.net/swmp-widgets" target = "_pa
 * SWMP trend maps - compare trends of a single parameter within and between reserves using a map
 * SWMP aggregations - compare aggregated trends of different parameters within and between reserves
 
-Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module1_widgets/widgets.pdf" target = "_parent">presentation</a>    
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module1_widgets/widgets.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module1_widgets/widgets.r" target = "_parent">script</a>    
 
 ### 2:00pm Time Series Topic 1
 
@@ -42,7 +44,7 @@ Topic 1: Weighted regression in tidal waters
 * Presentation on the theory and rationale of WRTDS for tidal waters
 * Apply WRTDS to NERRS sites, assess model fit, create visualization of results
     
-Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.pdf" target = "_parent">presentation</a>, script
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module2_wrtds/wrtds.r" target = "_parent">script</a>
 
 ### 3:00pm BREAK
 
@@ -53,7 +55,7 @@ Topic 2: Time series decomposition
 * Presentation on the theory and rationale of time series decomposition
 * Decompose NERRS time series using methods in SWMPr
     
-Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module3_decomp/decomp.pdf" target = "_parent">presentation</a>, script
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module3_decomp/decomp.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module3_decomp/decomp.r" target = "_parent">script</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module3_decomp/decomp_addl.html" target = "_parent">supplement</a>
 
 ### 4:15pm Time Series Topic 3
 
@@ -62,7 +64,7 @@ Topic 3: Seasonal Kendall tests
 * Presentation on the theory and rationale of Seasonal Kendall Tests
 * Evaluate the significance and direction of a trend using NERRS data
     
-Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module4_kendall/kendall.pdf" target = "_parent">presentation</a>, script
+Materials: <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module4_kendall/kendall.pdf" target = "_parent">presentation</a>, <a href="https://fawda123.github.io/swmp_workshop_2016/training_modules/module4_kendall/kendall.r" target = "_parent">script</a>
 
 ### 5:00pm ADJOURN
 
