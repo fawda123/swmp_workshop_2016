@@ -58,7 +58,7 @@ Case Study II: aggreswmp
 Case Study III: Overplotting ISCO and WQ data
 
 * investigate multiple parameters on the same plot  
-* bonus material on handling NAs
+* bonus material on handling NAs (<a href="https://fawda123.github.io/swmp_workshop_2016/flashdrive/morning/Part_4_BONUS_overplotting.R" target = "_parent">download</a>)
 
 ### 11:30am Part III: Bring your own data
 
