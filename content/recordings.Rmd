@@ -1,0 +1,32 @@
+---
+title: "Training recordings"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: vignette
+---
+
+Below are links to training recordings for each of the sessions from the 2016 workshop. Please note that these materials are provided as is for informational purposes and are not intended as actual online training video. The Adobe Connect plugin is required for viewing and a download prompt will open in the browser if not installed. Visit the individual pages for the <a href="http://swmprats.net/2016-workshop/morning" target="_parent">morning</a> and <a href="http://swmprats.net/2016-workshop/afternoon" target="_parent">afternoon</a> sessions for training materials. 
+
+### Morning sessions
+
+Powerpoint presentation overview: <a href="http://noaacsc.adobeconnect.com/p5cjjt7wihc/" target="_parent">view</a>
+
+Part I, Data import and plots: <a href="http://noaacsc.adobeconnect.com/pzv7tc4ith/" target="_parent">view</a> 
+
+Part II, Case Study 1, import_local and QAQC: <a href="http://noaacsc.adobeconnect.com/p646wiqgco6/" target="_parent">view</a>
+
+Part II, Case Study 2, aggreswmp: <a href="http://noaacsc.adobeconnect.com/p80lrhvocsd/" target="_parent">view</a>
+
+Part II, Case Study 3, overplotting ISCO and WQ data:  <a href="http://noaacsc.adobeconnect.com/p7vzvdru3c6/" target="_parent">view</a>
+
+### Afternoon sessions
+
+Introduction to Widgets: <a href="http://noaacsc.adobeconnect.com/p97hu4wqkdh/" target="_parent">view</a>
+
+Time Series Topic 1, Weighted regression in tidal waters: <a href="http://noaacsc.adobeconnect.com/p1wtzfozt8s/" target="_parent">view</a>
+
+Time Series Topic 2, Time series decomposition and intro to Fast Fourier transform: <a href="http://noaacsc.adobeconnect.com/p75esv5sl55/" target="_parent">view</a>
+
+Time Series Topic 3, Seasonal Kendall tests: <a href="http://noaacsc.adobeconnect.com/p95q1670ykn/" target="_parent">view</a>
+
