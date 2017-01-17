@@ -6,7 +6,7 @@ output:
     highlight: vignette
 ---
 
-Below are links to training recordings for each of the sessions from the 2016 workshop. Please note that these materials are provided as is for informational purposes and are not intended as actual online training video. The Adobe Connect plugin is required for viewing and a download prompt will open in the browser if not installed. Visit the individual pages for the <a href="http://swmprats.net/2016-workshop/morning" target="_parent">morning</a> and <a href="http://swmprats.net/2016-workshop/afternoon" target="_parent">afternoon</a> sessions for training materials. 
+Below are links to training recordings for each of the sessions from the 2016 workshop. Please note that these materials are provided as is for informational purposes and are not intended as actual online training videos. The Adobe Connect plugin is required for viewing and a download prompt will open in the browser if not installed. Visit the individual pages for the <a href="http://swmprats.net/2016-workshop/morning" target="_parent">morning</a> and <a href="http://swmprats.net/2016-workshop/afternoon" target="_parent">afternoon</a> sessions for training materials. 
 
 ### Morning sessions
 
